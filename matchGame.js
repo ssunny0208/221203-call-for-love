@@ -1,18 +1,24 @@
+let case3;
 let case4 = [];
 let case4Num = 0;
-let case7 = [];
-let case7Num = 0;
-let barY_1 = 0;
-let barSpeed = 1; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
-let barGrav = 0.03;
-let case9Y = 0;
-let case9Speed = 0;
-let case9Grav = 0.07;
 let schedule = [];
 let scheduleNum = 0;
+let case6;
+let case7 = [];
+let case7Num = 0;
+let case9;
+let case9Back;
+let case9BackX = 0;
+let barY_1 = 0;
+let barY = 0;
+// let barY_2 = 450;
+let barSpeed = 1; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
+let barGrav = 0.03;
 
 let imageAlpha = 0;
 
+let case9Y = 0;
+let case9Speed = 0.8;
 let timestamp = 0;
 
 let correctMatch;
@@ -69,7 +75,9 @@ let hideLine = false;
 
 function intro1() {
   //눈꺼풀
-  background(255);
+  tint(255, imageAlpha);
+  image(case3, 0, 0, width, height);
+  // filter(BLUR,5);
   fill(0);
   rectMode(CORNERS);
   rect(0, 0, width, height / 2 - barY_1);
@@ -85,15 +93,21 @@ function intro1() {
     barY_1 = 0;
     barSpeed = -barSpeed;
   }
+  if (barY_1 == 150) barY++;
+
+  if (barY == 3) barY_1 = 150;
+
   introTextBox(1, 180, 650, 1200, 200);
 }
 
 function intro2() {
   //자기소개
+  push();
   tint(255, imageAlpha);
   image(_background, 0, 0, width, height);
   introTextBox(2, 180, 350, 1200, 200);
   imageAlpha += 50;
+  pop();
 }
 
 function intro3() {
@@ -111,7 +125,7 @@ function intro4() {
   image(case4[case4Num], 0, 0, width, height);
   pop();
 
-  if (millis() - timestamp > 700) {
+  if (millis() - timestamp > 350) {
     case4Num++;
     timestamp = millis();
     if (case4Num >= 4) case4Num = 4;
@@ -128,7 +142,7 @@ function intro5() {
   image(schedule[scheduleNum], 150, 50);
   pop();
 
-  if (millis() - timestamp > 700) {
+  if (millis() - timestamp > 350) {
     scheduleNum++;
     timestamp = millis();
     if (scheduleNum >= 1) scheduleNum = 1;
@@ -150,7 +164,7 @@ function intro7() {
   tint(255, imageAlpha);
   image(case7[case7Num], 0, 0, width, height);
   pop();
-  if (millis() - timestamp > 700) {
+  if (millis() - timestamp > 350) {
     case7Num++;
     timestamp = millis();
     if (case7Num >= 3) case7Num = 3;
@@ -175,13 +189,12 @@ function intro9() {
   image(case9, 0, case9Y, width, height);
   pop();
   case9Y += case9Speed;
-  case9Speed += case9Grav;
+  // case9Speed += case9Grav;
   if (case9Y < -15 || case9Y > 15) {
     case9Y = constrain(case9Y, -15, 15);
     case9Speed = -case9Speed;
   }
   introTextBox(9, 180, 650, 1200, 200);
-  // introNextButton(1180, 750);
   imageAlpha += 5;
 }
 
@@ -591,26 +604,20 @@ function showBook() {
     tab_y = 162;
     tab_w = 50;
     tab_h = 80;
-    // if (click_book1) {
-    //   image(book_map, tab_x - 40, tab_y - 60, 16 * 62, 9 * 62);
-    // } else if (click_book2) {
-    //   image(book_address1, tab_x - 40, tab_y - 60, 16 * 62, 9 * 62);
-    // } else if (click_book3) {
-    //   image(book_address2, tab_x - 40, tab_y - 60, 16 * 62, 9 * 62);
-    // } else if (click_book4) {
-    //   image(book_address3, tab_x - 40, tab_y - 60, 16 * 62, 9 * 62);
-    // } else if (click_book5) {
-    //   image(book_mapOffice, tab_x - 40, tab_y - 60, 16 * 62, 9 * 62);
-    // }
     if (click_book1) {
+      image(book_map, 0, 0, 1600, 900);
       image(book_map, 0, 0, 1600, 900);
     } else if (click_book2) {
       image(book_address1, 0, 0, 1600, 900);
+      image(book_address1, 0, 0, 1600, 900);
     } else if (click_book3) {
+      image(book_address2, 0, 0, 1600, 900);
       image(book_address2, 0, 0, 1600, 900);
     } else if (click_book4) {
       image(book_address3, 0, 0, 1600, 900);
+      image(book_address3, 0, 0, 1600, 900);
     } else if (click_book5) {
+      image(book_mapOffice, 0, 0, 1600, 900);
       image(book_mapOffice, 0, 0, 1600, 900);
     }
     if (

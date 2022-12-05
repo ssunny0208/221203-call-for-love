@@ -129,6 +129,8 @@ class Timer {
     this.w = _w;
     this.h = _h;
     this.timerStop = false;
+    this.stopFrameCount = 0;
+    this.stopFrameCountIsTrue = true;
     this.answerDelayCount = 2;
   }
   bar() {
@@ -159,7 +161,14 @@ class Timer {
     }
 
     if (this.now == this.maxTime) {
-      if (frameCount % 30 == 0 && this.answerDelayCount > 0) {
+      if (this.stopFrameCountIsTrue) {
+        this.stopFrameCount = frameCount;
+        this.stopFrameCountIsTrue = false;
+      }
+      if (
+        frameCount % 40 == this.stopFrameCount % 40 &&
+        this.answerDelayCount > 0
+      ) {
         this.answerDelayCount--;
         if (!callFailureSound.isPlaying()) {
           callFailureSound.setVolume(0.5);
@@ -190,15 +199,23 @@ class Timer {
         this.timerStop = false;
         this.answerDelayCount = 2;
         stageStart = true;
+        this.stopFrameCountIsTrue = true;
         stage++;
       }
     }
     if (correctMatch) {
       this.timerStop = true;
+      if (this.stopFrameCountIsTrue) {
+        this.stopFrameCount = frameCount;
+        this.stopFrameCountIsTrue = false;
+      }
     }
     if (this.timerStop) {
       timerSound.stop();
-      if (frameCount % 30 == 0 && this.answerDelayCount > 0) {
+      if (
+        frameCount % 40 == this.stopFrameCount % 40 &&
+        this.answerDelayCount > 0
+      ) {
         this.answerDelayCount--;
       }
       if (this.answerDelayCount == 0) {
@@ -215,6 +232,7 @@ class Timer {
         this.timerStop = false;
         this.answerDelayCount = 2;
         stageStart = true;
+        this.stopFrameCountIsTrue = true;
         stage++;
       }
     }

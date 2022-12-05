@@ -5,8 +5,7 @@ let _name = "";
 let dayStart = true;
 let dayStartTiming;
 
-let introIsLooping = true;
-// let outroIsLooping = false;
+// let introIsLooping;
 let cursorOn = true;
 
 function preload() {
@@ -26,36 +25,15 @@ function setup() {
   gameTimer = new Timer(20, 1225, 280 + 100, 320, 50); // 게임 타이머, timer.js
   randomQuizLoad();
   noCursor();
+  introIsLooping = true;
+  introSound.setVolume(0.3);
 }
 
-// let nbr = 0;
-// function nameButtonRemove() {
-//   nbr++;
-//   print("nbr" + nbr);
-//   if (nbr == 2) {
-//     nameInput.remove();
-//     nameButton.remove();
-//     _name = nameInput.value();
-//     stage++;
-
-//     print("nameButtonRemove");
-//   }
-// }
-
 function draw() {
-  // background(220);
   image(_background, 0, 0, width, height);
   switch (stage) {
-    //matchGameDraw_1 : 숫자 게임
-    //matchGameDraw_2 : 이름 게임
-    //matchGameDraw_3 : 관공서 게임
     case 0:
       background(220);
-      if (introIsLooping) {
-        introSound.setVolume(0.3);
-        introSound.loop();
-        introIsLooping = false;
-      }
       push();
       fill(0);
       textSize(20);
@@ -471,6 +449,9 @@ function mouseClicked() {
   introNextButton1.next(1);
   switch (stage) {
     case 0:
+      if (submitButton.over()) {
+        introSound.loop();
+      }
       submitButton.next(1);
       break;
     case 12:
@@ -501,8 +482,10 @@ function mouseClicked() {
       if (enterButton.over()) {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
-        for (let j = 0; j <= enter - 1; j++) {
-          text1_1[j].goUp();
+        if (enter <= text1_1.length) {
+          for (let j = 0; j <= enter - 1; j++) {
+            text1_1[j].goUp();
+          }
         }
       }
 
@@ -541,8 +524,10 @@ function mouseClicked() {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
 
-        for (let j = 0; j <= enter - 1; j++) {
-          text1_2[j].goUp();
+        if (enter <= text1_2.length) {
+          for (let j = 0; j <= enter - 1; j++) {
+            text1_2[j].goUp();
+          }
         }
       }
       break;
@@ -582,8 +567,10 @@ function mouseClicked() {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
 
-        for (let j = 0; j <= enter - 1; j++) {
-          text2_1[j].goUp();
+        if (enter <= text2_1.length) {
+          for (let j = 0; j <= enter - 1; j++) {
+            text2_1[j].goUp();
+          }
         }
       }
       break;
@@ -621,8 +608,10 @@ function mouseClicked() {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
 
-        for (let j = 0; j <= enter - 1; j++) {
-          text2_3[j].goUp();
+        if (enter <= text2_3.length) {
+          for (let j = 0; j <= enter - 1; j++) {
+            text2_3[j].goUp();
+          }
         }
       }
       break;
@@ -631,8 +620,10 @@ function mouseClicked() {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
 
-        for (let j = 0; j <= enter - 1; j++) {
-          text2_2[j].goUp();
+        if (enter <= text2_2.length) {
+          for (let j = 0; j <= enter - 1; j++) {
+            text2_2[j].goUp();
+          }
         }
       }
       break;
