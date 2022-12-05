@@ -608,18 +608,13 @@ function showBook() {
     tab_h = 80;
     if (click_book1) {
       image(book_map, 0, 0, 1600, 900);
-      image(book_map, 0, 0, 1600, 900);
     } else if (click_book2) {
-      image(book_address1, 0, 0, 1600, 900);
       image(book_address1, 0, 0, 1600, 900);
     } else if (click_book3) {
       image(book_address2, 0, 0, 1600, 900);
-      image(book_address2, 0, 0, 1600, 900);
     } else if (click_book4) {
       image(book_address3, 0, 0, 1600, 900);
-      image(book_address3, 0, 0, 1600, 900);
     } else if (click_book5) {
-      image(book_mapOffice, 0, 0, 1600, 900);
       image(book_mapOffice, 0, 0, 1600, 900);
     }
     if (
