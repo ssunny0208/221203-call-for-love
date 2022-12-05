@@ -1,5 +1,4 @@
 let introText = [];
-let book_1 = [];
 let text1_1 = [];
 let text1_1_selection = [];
 let text1_2 = [];
@@ -11,17 +10,18 @@ let text2_2_selection = [];
 let text2_3 = [];
 
 let quiz_1 = [];
+let quiz_1_1 = [];
 let quiz_2 = [];
+let quiz_2_1 = [];
 let quiz_3 = [];
-let sequence_1 = [];
-let sequence_3 = [];
+let quiz_3_1 = [];
 
 let rows;
 let cols;
 let maxMatch;
 let widthOfCard;
 let heightOfCard;
-// let ListOfCards;
+
 function loadDialogue() {
   text1_1 = [
     //돌발전화 1-1
@@ -64,7 +64,7 @@ function loadDialogue() {
     "P:어이쿠, 여전히 싸늘하시네. 왜 또 화가 나셨을까? 오늘도 야근 확정?",
     "M:아뇨.. 그런 게 아니라 그냥 연말이라 그런지 싱숭생숭해서요.. 왠지 외롭고 쓸쓸하네요.",
     "P:에이, 왜요~ 연말이라는 건 더 행복하고 다이나믹할 내년이 곧! 이라는 뜻 아니겠어요?",
-    "P:A씨는 인생이 막 행복하고, 매일매일이 새롭고, 기대되고 막 그런가봐요?",
+    "M:A씨는 인생이 막 행복하고, 매일매일이 새롭고, 기대되고 막 그런가봐요?",
     "P:ㅎㅎ 당연하죠, 언제쯤 " +
       _name +
       "씨가 마음의 문을 열게 될지 너무 설레고 기대된달까?",
@@ -89,7 +89,7 @@ function loadDialogue() {
   ];
   text2_1 = [
     "P:오늘 비오는데 우산 챙기셨어요?",
-    "M:휴, 오늘은 전화 왜 안거시나 했네. 어김없이 출첵하셨네요. 근데 이 날씨에 무슨 비? 눈이면 눈이지..",
+    "M:휴,오늘은 전화 왜 안거시나 했네. 근데 이 날씨에 무슨 비? 눈이면 눈이지..",
     "P:이거 봐, 이렇게 냉담한 반응이면 제 눈에서 비가 내린다구요..ㅜ,ㅜ",
     "M:많이 한가하신가봐요? 농담할 시간도 있고?",
     "P:ㅎㅎ 그냥 걱정돼서요, 오늘 진짜 눈 많이 온대요. 미끄러지지 않게 조심해요.",
@@ -98,7 +98,7 @@ function loadDialogue() {
     "P:저 이번에 프랭크 시나트라 연말콘서트 티켓 구했어요!",
     "M:헐? 프랭크 시나트라요? 진짜요?",
     "P:와아, 이렇게 신난 목소리 처음 듣네요.",
-    "M:아니 프랭크 시나트라면 진짜 대박이잖아요!! 제가 유일하게 앨범까지 다 사 모은 가수라구요.",
+    "M:아니 프랭크 시나트라면 제가 유일하게 앨범까지 다 사 모은 가수에요, 대박",
     "P:그쵸, 진짜 대박이죠. 아니 그래서 이번주 토요일에 제 친구랑 보러가려구~",
     "M:네에.. 그렇구나.. (실망한 기색이 역력)",
     "P:했 었 는 데! 급한 일이 생겼다네요.. 혹시 시간 돼요?",
@@ -138,7 +138,7 @@ function loadDialogue() {
   text2_3 = [
     "P:2$%#@@%^ 야보세여?",
     "M:안녕하세요, 어디로 연결해드릴까요?",
-    "P:언니이.. 제 사랑의 짝대기 좀 연결해주세요.. 오늘같은 날에도 나는 혼자 술마시구.. 힝이야 완전..",
+    "P:언니이.. 제 사랑의 짝대기 좀 연결해주세요.. 오늘같은 날에도 나는 혼자 술마시구.. 힝..",
     "M:네?.. ",
     "D:(고민에 빠진다..)",
   ];
@@ -202,41 +202,41 @@ function setupListOfDialogue() {
   mukmul = loadFont("icon/a먹물명조L.ttf");
   dictionary_1 = {
     //숫자게임
-    3549: "	Manhattan의 1X30-5번한테 전화 걸어주세요. 	",
-    "0934": "	Bronx의 루트 25번한테 전화 걸어주세요. 	",
+    3549: "	Manhattan의 1x30-5번한테 전화 걸어주세요. 	",
+    "0934": "	Bronx의 √25번한테 전화 걸어주세요. 	",
     7204: "	Queens의 12보다 작은 짝수 개수만큼의 번호로 연결해주세요. 	",
     6458: "	Brooklyn의 19를 5로 나누었을 때의 나머지만큼의 번호로 연결해주세요.	",
-    "0073": "	Bronx의 3*8번한테 전화 걸어주세요.	",
+    "0073": "	Bronx의 3x8번한테 전화 걸어주세요.	",
     1379: "	Brooklyn의 1+2+3+4+5번으로 연결해주세요. 	",
     1110: "	Queens의 3!번으로 전화 걸어주세요. 	",
-    5839: "	Manhattan의 10-2*2+14번으로 연결 부탁해요. 	",
-    6773: "	Bronx의 12*4/2번으로 전화 걸어주세요.	",
+    5839: "	Manhattan의 10-2x2+14번으로 연결 부탁해요. 	",
+    6773: "	Bronx의 12x4÷2번으로 전화 걸어주세요.	",
     7503: "	Queens의 29를 7로 나눈 몫만큼의 번호로 연결해주세요. 	",
-    7857: "	Brooklyn의 0.6*5번으로 전화 연결해주세요. 	",
-    3019: "	Manhattan의 5*(3!-4)번으로 전화 연결해주세요. 	",
-    4222: "	Queens의 3*3+4번으로 연결 부탁해요.	",
-    6444: "	Bronx의 16-3*2번으로 전화 걸어주세요. 	",
-    7156: "	Brooklyn의 (3.14-2.94)*10번으로 전화 걸어주세요. 	",
-    7301: "	Queens의 루트36-루트16번으로 연결해주세요.	",
+    7857: "	Brooklyn의 0.6x5번으로 전화 연결해주세요. 	",
+    3019: "	Manhattan의 5x(3!-4)번으로 전화 연결해주세요. 	",
+    4222: "	Queens의 3x3+4번으로 연결 부탁해요.	",
+    6444: "	Bronx의 16-3x2번으로 전화 걸어주세요. 	",
+    7156: "	Brooklyn의 (3.14-2.94)x10번으로 전화 걸어주세요. 	",
+    7301: "	Queens의 √36-√16번으로 연결해주세요.	",
   };
   dictionary_2 = {
     //이름찾기게임
     "0359": "	Charles에게 전화를 걸고 싶은데, 연결해주실 수 있을까요?	",
     1567: "	제 친구 Michael에게 오랜만에 안부를 전하고 싶네요.	",
     1238: "	Andrew의 목소리는 정말 아름다워요. 당신도 그의 목소리를 들어보겠어요?	",
-    3145: "	Joe라는 사람을 찾고 있어요. 	",
+    3145: "	Joe Gardner라는 사람을 찾고 있어요. 	",
     3350: "	Luis에게 전화를 걸고 싶은데, 연결해주실 수 있을까요?	",
     3705: "	제 친구 Miranda에게 오랜만에 안부를 전하고 싶네요. 	",
     4035: "	Christine의 목소리는 정말 아름다워요. 당신도 그의 목소리를 들어보겠어요?	",
-    4627: "	Lou라는 사람을 찾고 있어요. 	",
-    2849: "	Peter에게 전화를 걸고 싶은데, 연결해주실 수 있을까요?	",
+    4627: "	Lou Miller라는 사람을 찾고 있어요. 	",
+    2849: "	Peter에게 전화를 걸고 싶은데, 연결해주실 수 있을까요?	성은 V로 시작했던거 같은데..",
     5341: "	제 친구 Joanne에게 오랜만에 안부를 전하고 싶네요. 	",
-    4239: "	Terence의 목소리는 정말 아름다워요. 당신도 그의 목소리를 들어보겠어요?	",
-    6025: "	Egon이라는 사람을 찾고 있어요. 	",
+    4239: "	Terence Fletcher이라는 사람을 찾고 있어요.	",
+    6025: "	Egon의 목소리는 정말 아름다워요. 당신도 그의 목소리를 들어보겠어요?		",
     6204: "	Otto에게 전화를 걸고 싶은데, 연결해주실 수 있을까요?	",
     2176: "	제 친구 Frank에게 오랜만에 안부를 전하고 싶네요. 	",
-    2359: "	Terence의 목소리는 정말 아름다워요. 당신도 그의 목소리를 들어보겠어요?	",
-    1761: "	Bobby라는 사람을 찾고 있어요. 	",
+    2356: "	Amy의 목소리는 정말 아름다워요. 당신도 그의 목소리를 들어보겠어요?	",
+    1761: "	Bobby Rydell이라는 사람을 찾고 있어요. 	",
   };
   dictionary_3 = {
     //관공서 게임
@@ -275,11 +275,11 @@ function setupListOfDialogue() {
     72: "	Jack	",
     73: "	Emilio	",
     74: "	Virgil	",
-    05: "	Miranda	",
-    06: "	Andrea	",
-    07: "	Emily	",
-    08: "	Nigel	",
-    09: "	Christian	",
+    "05": "	Miranda	",
+    "06": "	Andrea	",
+    "07": "	Emily	",
+    "08": "	Nigel	",
+    "09": "	Christian	",
     15: "	Nate	",
     16: "	Holly	",
     17: "	Paul	",
@@ -302,11 +302,11 @@ function setupListOfDialogue() {
     49: "	Peter	",
     23: "	Dylan	",
     11: "	Edward	",
-    00: "	Pepper	",
-    01: "	Michelle	",
-    02: "	산부인과	",
-    03: "	Harold	",
-    04: "	Otto	",
+    "00": "	Pepper	",
+    "01": "	Michelle	",
+    "02": "	산부인과	",
+    "03": "	Harold	",
+    "04": "	Otto	",
     10: "	Miles	",
     12: "	Peter	",
     13: "	Thaddeus	",
@@ -341,19 +341,6 @@ function setupListOfDialogue() {
     "올 연말은 따뜻하게 보낼 수 있을 줄 알았는데......",
     "벌써 시간이 이렇게 됐나? 출근이나 해야겠다.",
     "오늘은 또 어떤 전화가 나를 기다리고 있을까?",
-  ];
-
-  book_1 = [
-    //힌트책 1-관공서
-    "정형외과  Manhattan 24",
-    "내과  Brooklyn 1",
-    "산부인과  Queens 3",
-    "은행A (Bank of America)  Queens 15",
-    "(*특이사항: 12/23 ~ 12/25 휴무)",
-    "은행B (CITI Bank) Bronx 15",
-    "소방서  Bronx 19",
-    "경찰서  Manhattan 9",
-    "우체국  Manhattan 12",
   ];
 }
 function introTextBox(i, x, y, w, h) {
@@ -402,10 +389,35 @@ function setupListOfCard() {
       ListOfCards[i][j] = loadImage("icon/card4.PNG");
     }
   }
+  ListOfCards_1 = new Array(rows);
+  for (let i = 0; i < rows; i++) {
+    ListOfCards_1[i] = [];
+  }
+
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 5; j++) {
+      ListOfCards_1[i][j] = loadImage("icon/card1_1.PNG");
+    }
+  }
+  for (let i = 3; i < rows; i++) {
+    for (let j = 5; j < cols; j++) {
+      ListOfCards_1[i][j] = loadImage("icon/card2_1.PNG");
+    }
+  }
+  for (let i = 3; i < rows; i++) {
+    for (let j = 0; j < 5; j++) {
+      ListOfCards_1[i][j] = loadImage("icon/card3_1.PNG");
+    }
+  }
+  for (let i = 0; i < 5; i++) {
+    for (let j = 5; j < cols; j++) {
+      ListOfCards_1[i][j] = loadImage("icon/card4_1.PNG");
+    }
+  }
   hiddenPhoto_1 = loadImage("icon/test_1.PNG");
 
-  callingPhoto = loadImage("icon/call.PNG");
-  correctPhoto = loadImage("icon/correct.PNG");
+  // callingPhoto = loadImage("icon/call.PNG");
+  // correctPhoto = loadImage("icon/correct.PNG");
   // wrongPhoto = loadImage("testimage/wrong.PNG");
 
   dialog = loadImage("icon/background.png");
@@ -416,9 +428,23 @@ function setupListOfCard() {
   textBox_2 = loadImage("icon/textBox_2.png");
   book = loadImage("icon/book.png");
   book_over = loadImage("icon/book_over.png");
-  book_open = loadImage("icon/book_open.png");
+  book_address1 = loadImage("icon/book_address1.png");
+  book_address2 = loadImage("icon/book_address2.png");
+  book_address3 = loadImage("icon/book_address3.png");
+  book_map = loadImage("icon/book_map.png");
+  book_mapOffice = loadImage("icon/book_mapOffice.png");
+  tab1 = loadImage("icon/tab1.png");
+  tab1_1 = loadImage("icon/tab1_1.png");
+  tab2 = loadImage("icon/tab2.png");
+  tab2_1 = loadImage("icon/tab2_1.png");
+  tab3 = loadImage("icon/tab3.png");
+  tab3_1 = loadImage("icon/tab3_1.png");
+  tab4 = loadImage("icon/tab4.png");
+  tab4_1 = loadImage("icon/tab4_1.png");
+  tab5 = loadImage("icon/tab5.png");
+  tab5_1 = loadImage("icon/tab5_1.png");
   _background = loadImage("icon/background.jpg");
-  // background_1 = loadImage("icon/background_1.jpg");
+  _background_1 = loadImage("icon/background_1.jpg");
   timerBar = loadImage("icon/timer.png");
   wire = loadImage("icon/wire.png");
   cursor = loadImage("icon/cursor.png");
@@ -435,57 +461,68 @@ function setupListOfCard() {
   }
   case9 = loadImage("icon/case9.PNG");
   introNext = loadImage("icon/next.png");
+  gameRule = loadImage("icon/gamerule.png");
+  calendar1 = loadImage("icon/calendar1.png");
 }
 
 function randomQuizLoad() {
   quiz_1 = [
-    matchGameDraw_1(3, 5, 4, 9),
-    matchGameDraw_1(0, 9, 3, 4),
-    matchGameDraw_1(7, 2, 0, 4),
-    matchGameDraw_1(6, 4, 5, 8),
-    matchGameDraw_1(0, 0, 7, 3),
-    matchGameDraw_1(1, 3, 7, 9),
-    matchGameDraw_1(1, 1, 1, 0),
-    matchGameDraw_1(5, 8, 3, 9),
-    matchGameDraw_1(6, 7, 7, 3),
-    matchGameDraw_1(7, 5, 0, 3),
-    matchGameDraw_1(7, 8, 5, 7),
-    matchGameDraw_1(3, 0, 1, 9),
-    matchGameDraw_1(4, 2, 2, 2),
-    matchGameDraw_1(6, 4, 4, 4),
-    matchGameDraw_1(7, 1, 5, 6),
-    matchGameDraw_1(7, 3, 0, 1),
+    [3, 5, 4, 9],
+    [0, 9, 3, 4],
+    [7, 2, 0, 4],
+    [6, 4, 5, 8],
+    [0, 0, 7, 3],
+    [1, 3, 7, 9],
+    [1, 1, 1, 0],
+    [5, 8, 3, 9],
+    [6, 7, 7, 3],
+    [7, 5, 0, 3],
+    [7, 8, 5, 7],
+    [3, 0, 1, 9],
+    [4, 2, 2, 2],
+    [6, 4, 4, 4],
+    [7, 1, 5, 6],
+    [7, 3, 0, 1],
   ];
   quiz_2 = [
-    matchGameDraw_2(0, 3, 5, 9),
-    matchGameDraw_2(1, 5, 6, 7),
-    matchGameDraw_2(1, 2, 3, 8),
-    matchGameDraw_2(3, 1, 4, 5),
-    matchGameDraw_2(3, 3, 5, 0),
-    matchGameDraw_2(3, 7, 0, 5),
-    matchGameDraw_2(4, 0, 3, 5),
-    matchGameDraw_2(4, 6, 2, 7),
-    matchGameDraw_2(2, 8, 4, 9),
-    matchGameDraw_2(5, 3, 4, 1),
-    matchGameDraw_2(4, 2, 3, 9),
-    matchGameDraw_2(6, 0, 2, 5),
-    matchGameDraw_2(6, 2, 0, 4),
-    matchGameDraw_2(2, 1, 7, 6),
-    matchGameDraw_2(2, 3, 5, 9),
-    matchGameDraw_2(1, 7, 6, 1),
+    [0, 3, 5, 9],
+    [1, 5, 6, 7],
+    [1, 2, 3, 8],
+    [3, 1, 4, 5],
+    [3, 3, 5, 0],
+    [3, 7, 0, 5],
+    [4, 0, 3, 5],
+    [4, 6, 2, 7],
+    [2, 8, 4, 9],
+    [5, 3, 4, 1],
+    [4, 2, 3, 9],
+    [6, 2, 0, 4],
+    [2, 1, 7, 6],
+    [2, 3, 5, 6],
+    [1, 7, 6, 1],
   ];
   quiz_3 = [
-    matchGameDraw_3(0, 6, 2, 6),
-    matchGameDraw_3(4, 9, 4, 8),
-    matchGameDraw_3(1, 3, 5, 4),
-    matchGameDraw_3(0, 4, 2, 6),
-    matchGameDraw_3(7, 8, 0, 2),
-    matchGameDraw_3(5, 6, 5, 5),
-    matchGameDraw_3(7, 1, 1, 8),
-    matchGameDraw_3(5, 0, 6, 3),
+    [0, 6, 2, 6],
+    [4, 9, 4, 8],
+    [1, 3, 5, 4],
+    [0, 4, 2, 6],
+    [7, 8, 0, 2],
+    [5, 6, 5, 5],
+    [7, 1, 1, 8],
+    [5, 0, 6, 3],
   ];
-  sequence_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  sequence_1 = shuffle(sequence_1);
-  sequence_3 = [0, 1, 2, 3, 4, 5, 6, 7];
-  sequence_3 = shuffle(sequence_3);
+  quiz_1_1 = shuffle(quiz_1);
+  quiz_2_1 = shuffle(quiz_2);
+  quiz_3_1 = shuffle(quiz_3);
+}
+function setUpSound() {
+  callSound = loadSound("sound/call_efx.wav");
+  callFailureSound = loadSound("sound/callFailure_2_efx.wav");
+  callSuccessSound_1 = loadSound("sound/callSuccess_1_efx.wav");
+  callSuccessSound_2 = loadSound("sound/callSuccess_2_efx.wav");
+  callSuccessSound_3 = loadSound("sound/callSuccess_3_efx.wav");
+  timerSound = loadSound("sound/timer_efx.wav");
+  helloSound = loadSound("sound/hello_5.ogg");
+  introSound = loadSound("sound/Intro_BGM.mp3");
+  outroSound = loadSound("sound/Outro_BGM.mp3");
 }

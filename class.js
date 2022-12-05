@@ -30,6 +30,10 @@ class Button {
     if (this.over()) {
       if (stage == 0) {
         loadDialogue();
+      } else if (stage == 27) {
+        matchGameScore1 = 0;
+        matchGameScore2 = 0;
+        matchGameScore3 = 0;
       }
       stage = stage + n;
       stageStart = true;
@@ -157,6 +161,10 @@ class Timer {
     if (this.now == this.maxTime) {
       if (frameCount % 30 == 0 && this.answerDelayCount > 0) {
         this.answerDelayCount--;
+        if (!callFailureSound.isPlaying()) {
+          callFailureSound.setVolume(0.5);
+          callFailureSound.play();
+        }
       }
       if (this.answerDelayCount > 0) {
         image(
@@ -173,34 +181,41 @@ class Timer {
         text("실망이에요", dialogue_x + 120, dialogue_y + 430);
       }
       if (this.answerDelayCount == 0) {
-        stage++;
-        stageStart = true;
+        if (callFailureSound.isPlaying()) {
+          callFailureSound.stop();
+        }
         clickNum = 0;
-
         this.now = 0;
         correctMatch = false;
-
         this.timerStop = false;
         this.answerDelayCount = 2;
+        stageStart = true;
+        stage++;
       }
     }
     if (correctMatch) {
       this.timerStop = true;
     }
     if (this.timerStop) {
+      timerSound.stop();
       if (frameCount % 30 == 0 && this.answerDelayCount > 0) {
         this.answerDelayCount--;
       }
       if (this.answerDelayCount == 0) {
-        stage++;
-        stageStart = true;
+        if (callSuccessSound_1.isPlaying()) {
+          callSuccessSound_1.stop();
+        } else if (callSuccessSound_2.isPlaying()) {
+          callSuccessSound_2.stop();
+        } else if (callSuccessSound_3.isPlaying()) {
+          callSuccessSound_3.stop();
+        }
         clickNum = 0;
-
         this.now = 0;
         correctMatch = false;
-
         this.timerStop = false;
         this.answerDelayCount = 2;
+        stageStart = true;
+        stage++;
       }
     }
   }
