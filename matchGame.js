@@ -12,7 +12,7 @@ let case9BackX = 0;
 let barY_1 = 0;
 let barY = 0;
 // let barY_2 = 450;
-let barSpeed = 1; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
+let barSpeed = 1.5; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
 let barGrav = 0.03;
 
 let imageAlpha = 0;
@@ -96,6 +96,7 @@ function intro1() {
   if (barY_1 == 150) barY++;
 
   if (barY == 3) barY_1 = 150;
+  imageAlpha += 50;
 
   introTextBox(1, 180, 650, 1200, 200);
 }
@@ -131,7 +132,7 @@ function intro4() {
     if (case4Num >= 4) case4Num = 4;
   }
 
-  imageAlpha += 5;
+  imageAlpha += 50;
   introTextBox(4, 180, 650, 1200, 200);
 }
 
@@ -147,6 +148,7 @@ function intro5() {
     timestamp = millis();
     if (scheduleNum >= 1) scheduleNum = 1;
   }
+  imageAlpha += 50;
   introTextBox(5, 180, 650, 1200, 200);
 }
 
@@ -154,7 +156,7 @@ function intro6() {
   push();
   tint(255, imageAlpha);
   image(case6, 0, 0, width, height);
-  imageAlpha += 3;
+  imageAlpha += 50;
   pop();
   introTextBox(6, 180, 650, 1200, 200);
 }
@@ -169,7 +171,7 @@ function intro7() {
     timestamp = millis();
     if (case7Num >= 3) case7Num = 3;
   }
-  imageAlpha += 5;
+  imageAlpha += 50;
   introTextBox(7, 180, 650, 1200, 200);
 }
 
@@ -177,7 +179,7 @@ function intro8() {
   push();
   tint(255, imageAlpha);
   image(case7[1], 0, 0, width, height);
-  imageAlpha += 5;
+  imageAlpha += 50;
   pop();
   introTextBox(8, 180, 650, 1200, 200);
 }

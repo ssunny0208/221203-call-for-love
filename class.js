@@ -166,7 +166,7 @@ class Timer {
         this.stopFrameCountIsTrue = false;
       }
       if (
-        frameCount % 40 == this.stopFrameCount % 40 &&
+        frameCount % 60 == this.stopFrameCount % 60 &&
         this.answerDelayCount > 0
       ) {
         this.answerDelayCount--;
@@ -213,7 +213,7 @@ class Timer {
     if (this.timerStop) {
       timerSound.stop();
       if (
-        frameCount % 40 == this.stopFrameCount % 40 &&
+        frameCount % 60 == this.stopFrameCount % 60 &&
         this.answerDelayCount > 0
       ) {
         this.answerDelayCount--;

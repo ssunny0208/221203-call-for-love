@@ -54,48 +54,66 @@ function draw() {
       break;
     case 1:
       //오프닝 1
+      push();
       intro1();
+      pop();
       introNextButton.show();
       print("stage 1");
       break;
     case 2:
       //오프닝 2
+      push();
       intro2();
+      pop();
       introNextButton1.show();
       break;
     case 3:
       //오프닝 3
+      push();
       intro3();
+      pop();
       introNextButton.show();
       break;
     case 4:
       //오프닝 4
+      push();
       intro4();
+      pop();
       introNextButton.show();
       break;
     case 5:
       //오프닝 5
+      push();
       intro5();
+      pop();
       introNextButton.show();
       break;
     case 6:
       //오프닝 6
+      push();
       intro6();
+      pop();
       introNextButton.show();
       break;
     case 7:
       //오프닝 7
+      push();
       intro7();
+      pop();
       introNextButton.show();
       break;
     case 8:
       //오프닝 8
+      push();
       intro8();
+      pop();
       introNextButton.show();
       break;
     case 9:
       //오프닝 9
+      push();
       intro9();
+      pop();
       introNextButton.show();
       break;
     case 10:
