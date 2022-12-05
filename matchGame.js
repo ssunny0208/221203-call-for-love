@@ -588,10 +588,10 @@ function showAnswer() {
 
 function showBook() {
   //힌트 책 (드로우)
-  book_x = cols * widthOfCard * 2 + 150;
-  book_y = rows * heightOfCard * 2 - 200;
-  book_w = 90;
-  book_h = 120;
+  book_x = cols * widthOfCard * 2 + 139;
+  book_y = rows * heightOfCard * 2 - 190;
+  book_w = 80;
+  book_h = 160;
   if (
     mouseX > book_x &&
     mouseX < book_x + book_w &&
