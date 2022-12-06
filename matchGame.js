@@ -76,7 +76,7 @@ let hideLine = false;
 function intro1() {
   //눈꺼풀
   tint(255, imageAlpha);
-  image(case3, 0, 0, width, height);
+  image(case1, 0, 140, width, height);
   // filter(BLUR,5);
   fill(0);
   rectMode(CORNERS);
@@ -88,15 +88,19 @@ function intro1() {
   if (barY_1 > 150) {
     barY_1 = 150;
     barSpeed = -barSpeed;
-  }
-  if (barY_1 < 0) {
+  } else if (barY_1 < 0) {
     barY_1 = 0;
     barSpeed = -barSpeed;
   }
   if (barY_1 == 150) barY++;
 
-  if (barY == 3) barY_1 = 150;
-  imageAlpha += 50;
+  if (barY == 3) {
+    barY = 3;
+    barSpeed = 0;
+    barGrav = 0;
+    barY_1 = 150;
+  }
+  imageAlpha += 10;
 
   introTextBox(1, 180, 650, 1200, 200);
 }
@@ -106,18 +110,18 @@ function intro2() {
   push();
   tint(255, imageAlpha);
   image(_background, 0, 0, width, height);
-  introTextBox(2, 180, 350, 1200, 200);
-  imageAlpha += 50;
   pop();
+  introTextBox(2, 180, 350, 1200, 200);
+  imageAlpha += 10;
 }
 
 function intro3() {
   push();
   tint(255, imageAlpha);
   image(case3, 0, 0, width, height);
-  introTextBox(3, 180, 650, 1200, 200);
-  imageAlpha += 50;
   pop();
+  introTextBox(3, 180, 650, 1200, 200);
+  imageAlpha += 10;
 }
 
 function intro4() {
@@ -132,7 +136,7 @@ function intro4() {
     if (case4Num >= 4) case4Num = 4;
   }
 
-  imageAlpha += 50;
+  imageAlpha += 10;
   introTextBox(4, 180, 650, 1200, 200);
 }
 
@@ -143,12 +147,12 @@ function intro5() {
   image(schedule[scheduleNum], 150, 50);
   pop();
 
-  if (millis() - timestamp > 350) {
+  if (millis() - timestamp > 500) {
     scheduleNum++;
     timestamp = millis();
     if (scheduleNum >= 1) scheduleNum = 1;
   }
-  imageAlpha += 50;
+  imageAlpha += 10;
   introTextBox(5, 180, 650, 1200, 200);
 }
 
@@ -156,8 +160,8 @@ function intro6() {
   push();
   tint(255, imageAlpha);
   image(case6, 0, 0, width, height);
-  imageAlpha += 50;
   pop();
+  imageAlpha += 10;
   introTextBox(6, 180, 650, 1200, 200);
 }
 
@@ -166,21 +170,23 @@ function intro7() {
   tint(255, imageAlpha);
   image(case7[case7Num], 0, 0, width, height);
   pop();
-  if (millis() - timestamp > 350) {
+  if (millis() - timestamp > 500) {
     case7Num++;
     timestamp = millis();
     if (case7Num >= 3) case7Num = 3;
   }
-  imageAlpha += 50;
+  imageAlpha += 10;
   introTextBox(7, 180, 650, 1200, 200);
 }
 
 function intro8() {
   push();
   tint(255, imageAlpha);
-  image(case7[1], 0, 0, width, height);
-  imageAlpha += 50;
+  image(case8, 0, 0, width, height);
+  image(case8Clock, 0, 0, width, height);
+  // alarmClock.play();
   pop();
+  imageAlpha += 10;
   introTextBox(8, 180, 650, 1200, 200);
 }
 
@@ -188,8 +194,10 @@ function intro9() {
   push();
   tint(255, imageAlpha);
   background(255);
+  image(case9Back, case9BackX, 0);
   image(case9, 0, case9Y, width, height);
   pop();
+  case9BackX -= 0.3;
   case9Y += case9Speed;
   // case9Speed += case9Grav;
   if (case9Y < -15 || case9Y > 15) {
@@ -197,7 +205,7 @@ function intro9() {
     case9Speed = -case9Speed;
   }
   introTextBox(9, 180, 650, 1200, 200);
-  imageAlpha += 5;
+  imageAlpha += 10;
 }
 
 function showQuestion(qR, qC) {
@@ -257,6 +265,7 @@ function showQuestion(qR, qC) {
 
 function showQuestion_1(qR, qC) {
   if (stageStart) {
+    helloSound.setVolume(1);
     helloSound.play();
     stageStart = false;
   }
@@ -301,6 +310,34 @@ function showQuestion_2(qR, qC) {
     heightOfCard * 2
   );
 }
+
+function showQuestion_3(qR, qC) {
+  if (stageStart) {
+    helloSound_1.setVolume(1);
+    helloSound_1.play();
+    stageStart = false;
+  }
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      image(
+        ListOfCards[r][c],
+        widthOfCard * 2 * c + 140,
+        heightOfCard * 2 * r + 110,
+        widthOfCard * 2,
+        heightOfCard * 2
+      );
+    }
+  }
+
+  image(
+    ListOfCards_1[qR][qC],
+    widthOfCard * 2 * qC + 140,
+    heightOfCard * 2 * qR + 110,
+    widthOfCard * 2,
+    heightOfCard * 2
+  );
+}
+
 function showLine() {
   if (!hideLine) {
     pts = [
@@ -373,9 +410,9 @@ function showHint_1(_text) {
   textWrap(WORD);
   text(
     dictionary_1[_text],
-    dialogue_x + 130,
-    dialogue_y + 285,
-    dialogue_w - 50,
+    dialogue_x + 140,
+    dialogue_y + 290,
+    dialogue_w - 60,
     dialogue_h
   );
   // print(_text);
@@ -385,7 +422,7 @@ function showHint_2(_text) {
   //이름게임 질문지
   dialogue_x = 1120;
   dialogue_y = 280;
-  dialogue_w = 355;
+  dialogue_w = 380;
   dialogue_h = 130;
   // image(dialog, dialogue_x, dialogue_y, 500, 620);
   image(dialogue_W, dialogue_x + 80, dialogue_y + 250, dialogue_w, dialogue_h);
@@ -394,9 +431,9 @@ function showHint_2(_text) {
   textWrap(WORD);
   text(
     dictionary_2[_text],
-    dialogue_x + 130,
-    dialogue_y + 285,
-    dialogue_w - 50,
+    dialogue_x + 140,
+    dialogue_y + 290,
+    dialogue_w - 60,
     dialogue_h
   );
 }
@@ -413,9 +450,9 @@ function showHint_3(_text) {
   textWrap(WORD);
   text(
     dictionary_3[_text],
-    dialogue_x + 130,
-    dialogue_y + 285,
-    dialogue_w - 50,
+    dialogue_x + 140,
+    dialogue_y + 290,
+    dialogue_w - 60,
     dialogue_h
   );
 }
@@ -522,7 +559,7 @@ function showAnswer() {
       if (!callSuccessSound_1.isPlaying()) {
         callSuccessSound_1.play();
       }
-      text("최고예요!", dialogue_x + 130, dialogue_y + 440);
+      text("최고예요!", dialogue_x + 140, dialogue_y + 460);
       if (matchGameScoreIsTrue) {
         matchGameScore += 3;
         matchGameScore3++;
@@ -536,7 +573,7 @@ function showAnswer() {
       if (!callSuccessSound_2.isPlaying()) {
         callSuccessSound_2.play();
       }
-      text("고마워요", dialogue_x + 130, dialogue_y + 440);
+      text("고마워요", dialogue_x + 140, dialogue_y + 460);
       if (matchGameScoreIsTrue) {
         matchGameScore += 2;
         matchGameScore2++;
@@ -550,7 +587,7 @@ function showAnswer() {
       if (!callSuccessSound_3.isPlaying()) {
         callSuccessSound_3.play();
       }
-      text("분발하세요", dialogue_x + 130, dialogue_y + 440);
+      text("분발하세요", dialogue_x + 140, dialogue_y + 460);
       if (matchGameScoreIsTrue) {
         matchGameScore += 1;
         matchGameScore1++;
@@ -579,7 +616,7 @@ function showAnswer() {
       fill(0);
       textAlign(LEFT);
       textSize(20);
-      text("아니에요", dialogue_x + 120, dialogue_y + 430);
+      text("아니에요", dialogue_x + 140, dialogue_y + 460);
     }
   } else {
     wrongAnswerDelay = false;

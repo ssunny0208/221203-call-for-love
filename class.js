@@ -4,7 +4,6 @@ class Button {
     this.y = y;
     this.w = 50;
     this.h = 50;
-    this.textSize = 20;
   }
   over() {
     //마우스오버 시 참
@@ -22,8 +21,6 @@ class Button {
       image(introNext, this.x, this.y, this.w, this.h);
       pop();
     } else image(introNext, this.x, this.y, this.w, this.h);
-    // textFont(mukmul);
-    textAlign(LEFT);
   }
   next(n) {
     //스테이지 넘기는 버튼
@@ -42,6 +39,93 @@ class Button {
     }
   }
 }
+
+class Reset {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.w = 100;
+    this.h = 50;
+  }
+  reset_over() {
+    if (
+      mouseX > this.x &&
+      mouseX < this.x + this.w &&
+      mouseY > this.y &&
+      mouseY < this.y + this.h
+    ) {
+      return true;
+    } else return false;
+  }
+  reset_show() {
+    if (this.reset_over()) {
+      push();
+      tint(80, 20, 10, 180);
+      image(reset, this.x, this.y, this.w, this.h);
+      pop();
+    } else image(reset, this.x, this.y, this.w, this.h);
+  }
+  reset() {
+    if (this.reset_over()) {
+      stage = 0;
+      enter = 0;
+      _name = "";
+      dayStart = true;
+      dayStartTiming;
+      cursorOn = true;
+      case3;
+      case4 = [];
+      case4Num = 0;
+      schedule = [];
+      scheduleNum = 0;
+      case7 = [];
+      case7Num = 0;
+      case9BackX = 0;
+      barY_1 = 0;
+      barY = 0;
+      barSpeed = 1.5; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
+      barGrav = 0.03;
+
+      imageAlpha = 0;
+
+      case9Y = 0;
+      case9Speed = 0.8;
+      timestamp = 0;
+
+      pts = [];
+
+      matchGameScore = 0;
+      matchGameScore1 = 0;
+      matchGameScore2 = 0;
+      matchGameScore3 = 0;
+
+      matchGameScoreIsTrue = false;
+      clickNum = 0;
+
+      wrongAnswerDelayCount = 2;
+      wrongAnswerTiming = 0;
+      wrongAnswerDelay = false;
+
+      stageStartTiming = 0;
+      stageStart = true;
+
+      stop = false;
+      click_book0 = false;
+      click_book1 = false;
+      click_book2 = false;
+      click_book3 = false;
+      click_book4 = false;
+      click_book5 = false;
+
+      hideLine = false;
+
+      if (introSound.isPlaying()) {
+        introSound.stop();
+      }
+    }
+  }
+}
+
 class Selection {
   constructor(x, y, w, h, _text) {
     this.x = x;
@@ -83,10 +167,10 @@ class Selection {
 class Text {
   constructor(text) {
     this.text = text;
-    this.x = 1050 + 150;
+    this.x = 1050 + 140;
     this.y = 790;
-    this.w = 330;
-    this.h = 100;
+    this.w = 360;
+    this.h = 120;
     this.splitString = split(this.text, ":"); // :을 기준으로 text split, 말풍선 구분
   }
   showDialogue() {
@@ -94,15 +178,15 @@ class Text {
     fill(0);
     textWrap(WORD);
     if (this.splitString[0] == "P") {
-      //"P"=흰말풍선
+      //"P"=파란말풍선
       // print("P");
-      image(dialogue_W, this.x, this.y, this.w, this.h);
-      text(this.splitString[1], this.x + 40, this.y + 30, this.w - 40, this.h);
+      image(dialogue_B, this.x, this.y, this.w, this.h);
+      text(this.splitString[1], this.x + 60, this.y + 40, this.w - 60, this.h);
     } else if (this.splitString[0] == "M") {
-      //"M"=연두색 말풍선
+      //"M"=핑크색 말풍선
       // print("M");
-      image(dialogue_YG, this.x + 40, this.y, this.w, this.h);
-      text(this.splitString[1], this.x + 60, this.y + 30, this.w - 40, this.h);
+      image(dialogue_P, this.x + 30, this.y, this.w, this.h);
+      text(this.splitString[1], this.x + 60, this.y + 40, this.w - 60, this.h);
     } else if (this.splitString[0] == "D") {
       //"D"=지시문
       textAlign(CENTER);
@@ -187,7 +271,7 @@ class Timer {
         textAlign(LEFT);
         textFont(mukmul);
         textSize(20);
-        text("실망이에요", dialogue_x + 120, dialogue_y + 430);
+        text("실망이에요", dialogue_x + 120, dialogue_y + 460);
       }
       if (this.answerDelayCount == 0) {
         if (callFailureSound.isPlaying()) {

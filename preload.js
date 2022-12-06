@@ -48,7 +48,7 @@ function loadDialogue() {
     "M:(뭐야 왜 자기 할 말만 하고 전화를 끊어..?)",
     "D:마침 일에 집중이 안되길래 나가서 커피라도 사올 겸 1층으로 향한다",
     "D:1층에 내려오자, 테이블에 놓인 아보카도 샌드위치와 뜨거운 아메리카노가 보인다.",
-    "D:작업남에게 문자 보내기",
+    "D:Jake에게 문자 보내기",
   ];
   text1_1_selection = [
     //돌발전화 1-1 선택지
@@ -64,7 +64,7 @@ function loadDialogue() {
     "P:어이쿠, 여전히 싸늘하시네. 왜 또 화가 나셨을까? 오늘도 야근 확정?",
     "M:아뇨.. 그런 게 아니라 그냥 연말이라 그런지 싱숭생숭해서요.. 왠지 외롭고 쓸쓸하네요.",
     "P:에이, 왜요~ 연말이라는 건 더 행복하고 다이나믹할 내년이 곧! 이라는 뜻 아니겠어요?",
-    "M:A씨는 인생이 막 행복하고, 매일매일이 새롭고, 기대되고 막 그런가봐요?",
+    "M:Jake씨는 인생이 막 행복하고, 매일매일이 새롭고, 기대되고 막 그런가봐요?",
     "P:ㅎㅎ 당연하죠, 언제쯤 " +
       _name +
       "씨가 마음의 문을 열게 될지 너무 설레고 기대된달까?",
@@ -106,9 +106,9 @@ function loadDialogue() {
     "P:여기 우리 말고 또 전화 엿듣고 있는 사람 있어요? 나랑 갈래요?",
   ];
   text2_1_selection = [
-    "1) 아 그럼 그 티켓 제가 살게요. 당신 말고 친구랑 갔다 오고싶어서요.",
-    "2)음.. 뭐 시간이랑 일정이랑 확인해보구요!",
-    "3)헐 저야 너무 좋죠ㅜ 덕분에 귀호강 잔뜩 하고 오겠네요..!",
+    "1) 헐 저야 너무 좋죠ㅜ 덕분에 귀호강 잔뜩 하고 오겠네요..!",
+    "2) 음.. 뭐 시간이랑 일정이랑 확인해보구요!",
+    "3) 아 그럼 그 티켓 제가 살게요. 당신 말고 친구랑 갔다 오고싶어서요.",
   ];
   text2_2 = [
     "P:🎶 Jingle bell, jingle bell, jingle bell rock 🎶 Jingle bells swing and jingle bells ring",
@@ -127,12 +127,15 @@ function loadDialogue() {
       _name +
       "씨는 저를 거들떠도 안봐주지만..",
     "M:말에 사족을 안붙이면 죽는 병이라도 걸렸어요? 왜 바쁜데요 오늘은.",
-    "P:아 오늘 유기견 봉사 동호회 미팅이 있거든요~ 연말이라 정리할 일이 이것저것 많네요.",
+    "P:아 저 오늘 불우이웃 돕기 연말 행사 있거든요~ 정리할 게 이것저것 많네요.",
+    "M: 오, 봉사도 해요? 진짜 대단하시다.",
+    "P: 제가 한 대단 하죠.",
+    "M: 아니 사실 저도 그런 거에 관심 많거든요!",
+    "P: 아 진짜? 그럼 이번 행사 저랑 같이 갈래요?",
   ];
   text2_2_selection = [
-    "1) 오, 봉사도 해요? 진짜 대단하시다.",
-    "2) 헐, 저도 유기견 보호에 관심 많은데..! 다음에 저한테도 그 동호회 소개 좀 해주세요 ☺",
-    "3) 아, 그럼 얼른 일 보세요. 안녕~",
+    "1) (어머나..) Jake 씨의 데이트 신청을 받아준다.",
+    "2) (가만보자.. 얜 내 스타일은 아닌데. 아까 전화 건 여자와 연결해준다.)",
   ];
 
   text2_3 = [
@@ -147,10 +150,10 @@ function loadDialogue() {
   } //돌발전화 1-1
   for (let i = 0; i < text1_1_selection.length; i++) {
     text1_1_selection[i] = new Selection(
-      1240,
-      400 + i * 130,
-      300,
-      100,
+      1210,
+      380 + i * 130,
+      350,
+      120,
       text1_1_selection[i]
     );
   } //돌발전화 1-1 선택지
@@ -159,10 +162,10 @@ function loadDialogue() {
   } //돌발전화 1-2
   for (let i = 0; i < text1_2_selection.length; i++) {
     text1_2_selection[i] = new Selection(
-      1240,
-      400 + i * 130,
-      300,
-      100,
+      1210,
+      380 + i * 130,
+      350,
+      120,
       text1_2_selection[i]
     );
   } //돌발전화 1-2 선택지
@@ -171,10 +174,10 @@ function loadDialogue() {
   } //돌발전화 2-1
   for (let i = 0; i < text2_1_selection.length; i++) {
     text2_1_selection[i] = new Selection(
-      1240,
-      400 + i * 130,
-      300,
-      100,
+      1210,
+      380 + i * 130,
+      350,
+      120,
       text2_1_selection[i]
     );
   } //돌발전화 2-1 선택지
@@ -183,13 +186,13 @@ function loadDialogue() {
   } //돌발전화 2-2
   for (let i = 0; i < text2_2_selection.length; i++) {
     text2_2_selection[i] = new Selection(
-      1240,
-      400 + i * 130,
-      300,
-      100,
+      1210,
+      420 + i * 130,
+      350,
+      120,
       text2_2_selection[i]
     );
-  } //돌발전화 2-2 선택지
+  } //돌발전화 2-3
   for (let i = 0; i < text2_3.length; i++) {
     text2_3[i] = new Text(text2_3[i]);
   }
@@ -420,11 +423,13 @@ function setupListOfCard() {
   // correctPhoto = loadImage("icon/correct.PNG");
   // wrongPhoto = loadImage("testimage/wrong.PNG");
 
-  dialog = loadImage("icon/background.png");
-  dialogue_W = loadImage("icon/dialogue_w.png");
-  dialogue_YG = loadImage("icon/dialogue_YG.png");
-  option_box = loadImage("icon/optionBox.png");
-  option_box_1 = loadImage("icon/optionBox1.png");
+  dialogue_W = loadImage("icon/ver2_white.png");
+  dialogue_YG = loadImage("icon/ver2_green.png");
+  dialogue_B = loadImage("icon/ver2_blue.png");
+  dialogue_P = loadImage("icon/ver2_pink.png");
+  option_box = loadImage("icon/기본.PNG");
+  option_box_1 = loadImage("icon/기본_1.PNG");
+  // option_box_2 = loadImage("icon/마우스오버_데이트함.PNG");
   textBox_2 = loadImage("icon/textBox_2.png");
   book = loadImage("icon/book.png");
   book_over = loadImage("icon/book_over.png");
@@ -448,7 +453,8 @@ function setupListOfCard() {
   timerBar = loadImage("icon/timer.png");
   wire = loadImage("icon/wire.png");
   cursor = loadImage("icon/cursor.png");
-  case3 = loadImage("icon/case3_S.JPG");
+  case1 = loadImage("icon/case1.png");
+  case3 = loadImage("icon/case3.JPG");
   for (let i = 0; i < 5; i++) {
     case4[i] = loadImage("icon/case4-" + i + ".PNG");
   }
@@ -457,10 +463,14 @@ function setupListOfCard() {
     case7[i] = loadImage("icon/case7-" + i + ".PNG");
   }
   for (let i = 0; i < 2; i++) {
-    schedule[i] = loadImage("icon/schedule" + i + "_S.PNG");
+    schedule[i] = loadImage("icon/schedule" + i + ".PNG");
   }
+  case8 = loadImage("icon/case8.PNG");
+  case8Clock = loadImage("icon/case8Clock.PNG");
   case9 = loadImage("icon/case9.PNG");
+  case9Back = loadImage("icon/case9Back.jpg");
   introNext = loadImage("icon/next.png");
+  reset = loadImage("icon/reset.png");
   gameRule = loadImage("icon/gamerule.png");
   calendar1 = loadImage("icon/calendar1.png");
 }
@@ -522,7 +532,8 @@ function setUpSound() {
   callSuccessSound_2 = loadSound("sound/callSuccess_2_efx.wav");
   callSuccessSound_3 = loadSound("sound/callSuccess_3_efx.wav");
   timerSound = loadSound("sound/timer_efx.wav");
-  helloSound = loadSound("sound/hello_5.ogg");
+  helloSound = loadSound("sound/hello_5.wav");
+  helloSound_1 = loadSound("sound/hello_1.wav");
   introSound = loadSound("sound/Intro_BGM.mp3");
   outroSound = loadSound("sound/Outro_BGM.mp3");
 }

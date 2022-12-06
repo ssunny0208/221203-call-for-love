@@ -5,7 +5,9 @@ let _name = "";
 let dayStart = true;
 let dayStartTiming;
 
-// let introIsLooping;
+let loveScore = 0;
+let loveResult = false;
+
 let cursorOn = true;
 
 function preload() {
@@ -20,13 +22,13 @@ function setup() {
   introNextButton = new Button(1180, 720);
   introNextButton1 = new Button(1180, 430);
   submitButton = new Button(width / 2 + 130, height / 2 - 25);
-  enterButton = new Button(1350, 800); // 돌발전화 진행 버튼, button.js
+  enterButton = new Button(1500, 800); // 돌발전화 진행 버튼, button.js
   nextButton = new Button(1350, 800); // 돌발전화 진행 버튼, button.js
+  resetButton = new Reset(1400, 50);
   gameTimer = new Timer(20, 1225, 280 + 100, 320, 50); // 게임 타이머, timer.js
   randomQuizLoad();
   noCursor();
-  introIsLooping = true;
-  introSound.setVolume(0.3);
+  introSound.setVolume(0.5);
 }
 
 function draw() {
@@ -36,8 +38,8 @@ function draw() {
       background(220);
       push();
       fill(0);
-      textSize(20);
-      text("Player Name : ", width / 2 - 125, height / 2 - 40);
+      textSize(25);
+      text("Player Name : ", width / 2 - 125, height / 2 - 47);
       pop();
       push();
       fill(256);
@@ -118,14 +120,11 @@ function draw() {
       break;
     case 10:
       //게임설명화면1
-      background(255);
-      image(gameRule, 40, 0, 1520, 855);
+      rect(0, 700, 1600, 200);
+      image(gameRule, 0, 0, 1600, 900);
       push();
-      fill(0);
-      textAlign(CENTER);
-      textSize(30);
-      text("Press Enter To Start", width / 2, 860);
-      pop();
+      fill(255, 231, 173);
+      noStroke();
       break;
     case 11:
       //23일 오전 스타트
@@ -174,7 +173,14 @@ function draw() {
       break;
     case 17: //돌발전화 1-1
       image(_background_1, 0, 0, width, height);
-      showQuestion_1(7, 9);
+      showQuestion_1(6, 9);
+
+      push();
+      fill(0);
+      textAlign(LEFT);
+      textSize(30);
+      text("Jake", 1250, 830);
+      pop();
 
       enterButton.show();
       if (enter <= text1_1.length) {
@@ -189,7 +195,7 @@ function draw() {
       break;
     case 18: //돌발전화 선택지 1-1
       image(_background_1, 0, 0, width, height);
-      showQuestion_2(7, 9);
+      showQuestion_2(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
 
       for (let i = 0; i < text1_1_selection.length; i++) {
@@ -243,8 +249,15 @@ function draw() {
       break;
     case 25: //돌발전화 1-2
       image(_background_1, 0, 0, width, height);
-      showQuestion_1(7, 9);
+      showQuestion_1(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
+
+      push();
+      fill(0);
+      textAlign(LEFT);
+      textSize(30);
+      text("Jake", 1250, 830);
+      pop();
 
       enterButton.show();
       if (enter <= text1_2.length) {
@@ -259,7 +272,7 @@ function draw() {
       break;
     case 26: //돌발전화 선택지 1-2
       image(_background_1, 0, 0, width, height);
-      showQuestion_2(7, 9);
+      showQuestion_2(6, 9);
       for (let i = 0; i < text1_2_selection.length; i++) {
         text1_2_selection[i].display();
       }
@@ -326,8 +339,14 @@ function draw() {
       break;
     case 34: //돌발전화 2-1
       image(_background_1, 0, 0, width, height);
-      showQuestion_1(7, 9);
+      showQuestion_1(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
+      push();
+      fill(0);
+      textAlign(LEFT);
+      textSize(30);
+      text("Jake", 1250, 830);
+      pop();
 
       enterButton.show();
       if (enter <= text2_1.length) {
@@ -342,7 +361,7 @@ function draw() {
       break;
     case 35: //돌발전화 선택지 2-1
       image(_background_1, 0, 0, width, height);
-      showQuestion_2(7, 9);
+      showQuestion_2(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
       for (let i = 0; i < text2_1_selection.length; i++) {
         text2_1_selection[i].display();
@@ -394,7 +413,14 @@ function draw() {
       break;
     case 42: //돌발전화 2-3(의문의 여자)
       image(_background_1, 0, 0, width, height);
-      showQuestion_1(2, 0);
+      showQuestion_3(2, 0);
+      push();
+      fill(0);
+      textAlign(LEFT);
+      textSize(30);
+      text("???", 1250, 830);
+      pop();
+
       enterButton.show();
       if (enter <= text2_3.length) {
         for (let i = 0; i < enter; i++) {
@@ -408,7 +434,13 @@ function draw() {
       break;
     case 43: //돌발전화 2-2
       image(_background_1, 0, 0, width, height);
-      showQuestion_1(7, 9);
+      showQuestion_1(6, 9);
+      push();
+      fill(0);
+      textAlign(LEFT);
+      textSize(30);
+      text("Jake", 1250, 830);
+      pop();
 
       enterButton.show();
       if (enter <= text2_2.length) {
@@ -424,7 +456,7 @@ function draw() {
       break;
     case 44: //돌발전화 선택지 2-2
       image(_background_1, 0, 0, width, height);
-      showQuestion_2(7, 9);
+      showQuestion_2(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
       for (let i = 0; i < text2_2_selection.length; i++) {
         text2_2_selection[i].display();
@@ -445,10 +477,25 @@ function draw() {
       );
       nextButton.show();
       break;
+    case 46:
+      //중간결과
+      textSize(20);
+      textAlign(CENTER);
+      text("최종결과", 1350, 350);
+      text("실적: " + matchGameScore + "/48", 1350, 450);
+      text("호감도: " + loveScore + "/7", 1350, 530);
+      if (loveResult) {
+        text("외롭지 않은 크리스마스", 1350, 610);
+      } else text("외로운 크리스마스", 1350, 610);
+
+      text("-The END-", 1350, 690);
+      break;
   }
+
   if (cursorOn) {
     image(cursor, mouseX - 20, mouseY - 20, 40, 40);
   }
+  resetButton.reset_show();
 }
 function keyPressed() {
   if (stage == 0) {
@@ -459,18 +506,45 @@ function keyPressed() {
   if (stage == 10) {
     if (keyCode == ENTER) {
       stage++;
+      introSound.setVolume(0.2);
     }
   }
 }
 function mouseClicked() {
-  introNextButton.next(1);
-  introNextButton1.next(1);
+  resetButton.reset();
   switch (stage) {
     case 0:
       if (submitButton.over()) {
         introSound.loop();
       }
       submitButton.next(1);
+      break;
+    case 1:
+      introNextButton.next(1);
+      break;
+    case 2:
+      introNextButton1.next(1);
+      break;
+    case 3:
+      introNextButton.next(1);
+      break;
+    case 4:
+      introNextButton.next(1);
+      break;
+    case 5:
+      introNextButton.next(1);
+      break;
+    case 6:
+      introNextButton.next(1);
+      break;
+    case 7:
+      introNextButton.next(1);
+      break;
+    case 8:
+      introNextButton.next(1);
+      break;
+    case 9:
+      introNextButton.next(1);
       break;
     case 12:
       clickBook(); // 힌트책 클릭
@@ -512,6 +586,13 @@ function mouseClicked() {
       for (let i = 0; i < text1_1_selection.length; i++) {
         text1_1_selection[i].next(1);
       }
+      if (text1_1_selection[0].over()) {
+        loveScore += 2;
+      } else if (text1_1_selection[1].over()) {
+        loveScore += 1;
+      } else if (text1_1_selection[2].over()) {
+        loveScore += 0;
+      }
       break;
     case 20:
       clickBook();
@@ -552,6 +633,13 @@ function mouseClicked() {
     case 26:
       for (let i = 0; i < text1_2_selection.length; i++) {
         text1_2_selection[i].next(1);
+      }
+      if (text1_2_selection[0].over()) {
+        loveScore += 2;
+      } else if (text1_2_selection[1].over()) {
+        loveScore += 1;
+      } else if (text1_2_selection[2].over()) {
+        loveScore += 0;
       }
     case 27:
       nextButton.next(1);
@@ -595,6 +683,13 @@ function mouseClicked() {
     case 35:
       for (let i = 0; i < text2_1_selection.length; i++) {
         text2_1_selection[i].next(1);
+      }
+      if (text2_1_selection[0].over()) {
+        loveScore += 2;
+      } else if (text2_1_selection[1].over()) {
+        loveScore += 1;
+      } else if (text2_1_selection[2].over()) {
+        loveScore += 0;
       }
       break;
     case 37:
@@ -648,6 +743,13 @@ function mouseClicked() {
     case 44:
       for (let i = 0; i < text2_2_selection.length; i++) {
         text2_2_selection[i].next(1);
+      }
+      if (text2_2_selection[0].over()) {
+        loveScore += 1;
+        loveResult = true;
+      } else if (text2_2_selection[1].over()) {
+        loveScore += 0;
+        loveResult = false;
       }
     case 45:
       nextButton.next(1);
