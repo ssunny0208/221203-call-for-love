@@ -73,7 +73,7 @@ class Reset {
       dayStart = true;
       dayStartTiming;
       cursorOn = true;
-      case3;
+
       case4 = [];
       case4Num = 0;
       schedule = [];
@@ -83,13 +83,14 @@ class Reset {
       case9BackX = 0;
       barY_1 = 0;
       barY = 0;
-      barSpeed = 1.5; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
+      barSpeed = 5; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
       barGrav = 0.03;
 
       imageAlpha = 0;
 
       case9Y = 0;
       case9Speed = 0.8;
+      case9BackX = 0;
       timestamp = 0;
 
       pts = [];
@@ -118,6 +119,9 @@ class Reset {
       click_book5 = false;
 
       hideLine = false;
+
+      loveScore = 0;
+      loveResult = false;
 
       if (introSound.isPlaying()) {
         introSound.stop();

@@ -120,11 +120,13 @@ function draw() {
       break;
     case 10:
       //게임설명화면1
-      rect(0, 700, 1600, 200);
-      image(gameRule, 0, 0, 1600, 900);
       push();
       fill(255, 231, 173);
       noStroke();
+      rect(0, 700, 1600, 200);
+      pop();
+      image(gameRule, 0, 0, 1600, 900);
+
       break;
     case 11:
       //23일 오전 스타트

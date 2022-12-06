@@ -1,3 +1,4 @@
+let case1;
 let case3;
 let case4 = [];
 let case4Num = 0;
@@ -12,7 +13,7 @@ let case9BackX = 0;
 let barY_1 = 0;
 let barY = 0;
 // let barY_2 = 450;
-let barSpeed = 1.5; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
+let barSpeed = 5; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
 let barGrav = 0.03;
 
 let imageAlpha = 0;
