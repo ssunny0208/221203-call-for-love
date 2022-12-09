@@ -70,7 +70,9 @@ class Reset {
       stage = 0;
       enter = 0;
       introSound.stop();
+      outroSound.stop();
       _name = "";
+      outroSoundIsTrue = false;
 
       dayStart = true;
 

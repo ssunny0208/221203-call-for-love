@@ -530,15 +530,15 @@ function showLine() {
   if (!hideLine) {
     pts = [
       createVector(
-        widthOfCard * (2 * questionColumn) + 176,
+        widthOfCard * (2 * questionColumn) + 173,
         heightOfCard * (2 * questionRow + 1) + 140
       ),
       createVector(
-        (3 * (widthOfCard * (2 * questionColumn) + 176) + mouseX) / 4,
+        (3 * (widthOfCard * (2 * questionColumn) + 173) + mouseX) / 4,
         heightOfCard * (2 * questionRow + 1) + 262
       ),
       createVector(
-        (widthOfCard * (2 * questionColumn) + 176 + 3 * mouseX) / 4,
+        (widthOfCard * (2 * questionColumn) + 173 + 3 * mouseX) / 4,
         mouseY + 150
       ),
       createVector(mouseX, mouseY),
@@ -690,9 +690,9 @@ function showAnswer() {
     push();
     noFill();
     stroke(89, 216, 93);
-    strokeWeight(6);
+    strokeWeight(8);
     (pts[1] = createVector(
-      (3 * (widthOfCard * (2 * questionColumn) + 176) +
+      (3 * (widthOfCard * (2 * questionColumn) + 173) +
         widthOfCard * (2 * answerColumn) +
         171) /
         4,
@@ -701,12 +701,12 @@ function showAnswer() {
       (pts[2] = createVector(
         (widthOfCard * (2 * questionColumn) +
           171 +
-          3 * (widthOfCard * (2 * answerColumn) + 176)) /
+          3 * (widthOfCard * (2 * answerColumn) + 173)) /
           4,
         heightOfCard * (2 * answerRow + 1) + 140 + 150
       ));
     pts[3] = createVector(
-      widthOfCard * (2 * answerColumn) + 176,
+      widthOfCard * (2 * answerColumn) + 173,
       heightOfCard * (2 * answerRow + 1) + 140
     );
     bezier(

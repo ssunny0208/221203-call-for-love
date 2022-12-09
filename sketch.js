@@ -11,6 +11,7 @@ let loveResult1 = false;
 let loveResult2 = false;
 
 let cursorOn = true;
+let outroSoundIsTrue = false;
 
 function preload() {
   setupListOfCard();
@@ -31,6 +32,7 @@ function setup() {
   randomQuizLoad();
   noCursor();
   introSound.setVolume(0.5);
+  outroSound.setVolume(0.5);
 }
 
 function draw() {
@@ -527,6 +529,10 @@ function draw() {
     //   text("-The END-", 1350, 690);
     //   break;
     case 59:
+      if (outroSoundIsTrue) {
+        outroSound.loop();
+        outroSoundIsTrue = false;
+      }
       push();
       outro1();
       pop();
@@ -597,6 +603,15 @@ function draw() {
       outro12();
       pop();
       introNextButton.show();
+      break;
+    case 71:
+      image(startPage, 0, 0, width, height);
+      push();
+      fill(255);
+      textSize(30);
+      textAlign(CENTER);
+      pop();
+      text("THE END", width / 2, 700);
       break;
     //여기까지
   }
@@ -866,7 +881,7 @@ function mouseClicked() {
     case 46:
       if (loveScore <= 3) {
         for (let i = 0; i < text2_2_1_selection.length; i++) {
-          text2_2_1_selection[i].next(13);
+          text2_2_1_selection[i].next(1);
         }
         if (text2_2_1_selection[0].over()) {
           // loveScore += 1;
@@ -877,7 +892,7 @@ function mouseClicked() {
         }
       } else if (loveScore > 3) {
         for (let i = 0; i < text2_2_selection.length; i++) {
-          text2_2_selection[i].next(13);
+          text2_2_selection[i].next(1);
         }
         if (text2_2_selection[0].over()) {
           // loveScore += 1;
@@ -887,7 +902,13 @@ function mouseClicked() {
           loveResult2 = false; //호감도 높음, 연애 안함
         }
       }
-
+    case 47:
+      nextButton.next(12);
+      if (nextButton.over) {
+        introSound.stop();
+        outroSoundIsTrue = true;
+      }
+      break;
     case 59:
       //공통 엔딩-1
       introNextButton.next(1);
@@ -925,6 +946,7 @@ function mouseClicked() {
       break;
     case 64:
       //우수 사원 O, 연애 X-3
+      introNextButton.next(7);
       break;
     case 65:
       //우수 사원 X, 연애 X-1
@@ -936,6 +958,7 @@ function mouseClicked() {
       break;
     case 67:
       //우수 사원 X, 연애 X-3
+      introNextButton.next(4);
       break;
     case 68:
       //우수 사원 O, 연애 O-1
@@ -947,6 +970,7 @@ function mouseClicked() {
       break;
     case 70:
       //우수 사원 O, 연애 O-3
+      introNextButton.next(1);
       break;
     //여기까지
   }
