@@ -69,6 +69,7 @@ class Reset {
     if (this.reset_over()) {
       stage = 0;
       enter = 0;
+      introSound.stop();
       _name = "";
 
       dayStart = true;
@@ -97,6 +98,19 @@ class Reset {
       imageAlpha7 = 0;
       imageAlpha8 = 0;
       imageAlpha9 = 0;
+
+      imageAlpha59 = 0;
+      imageAlpha60 = 0;
+      imageAlpha61 = 0;
+      imageAlpha62 = 0;
+      imageAlpha63 = 0;
+      imageAlpha64 = 0;
+      imageAlpha65 = 0;
+      imageAlpha66 = 0;
+      imageAlpha67 = 0;
+      imageAlpha68 = 0;
+      imageAlpha69 = 0;
+      imageAlpha70 = 0;
 
       case9Y = 0;
       case9Speed = 0.8;

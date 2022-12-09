@@ -6,6 +6,7 @@ let dayStart = true;
 let dayStartTiming;
 
 let loveScore = 0;
+
 let loveResult1 = false;
 let loveResult2 = false;
 
@@ -303,12 +304,11 @@ function draw() {
       //중간결과
       textSize(20);
       text("23일 실적", 1320, 350);
-      text("최고예요: " + matchGameScore3, 1320, 450);
-      text("고마워요: " + matchGameScore2, 1320, 530);
-      text("분발하세요: " + matchGameScore1, 1320, 610);
+      text("Perfect: " + matchGameScore3, 1320, 450);
+      text("Great: " + matchGameScore2, 1320, 530);
+      text("Not Bad: " + matchGameScore1, 1320, 610);
       text(
-        "실망이에요: " +
-          (6 - (matchGameScore1 + matchGameScore2 + matchGameScore3)),
+        "Fail: " + (6 - (matchGameScore1 + matchGameScore2 + matchGameScore3)),
         1320,
         690
       );
@@ -429,7 +429,7 @@ function draw() {
       cursorOn = true;
       stage++;
       break;
-    case 44: //돌발전화 2-3(의문의 여자)
+    case 44: //돌발전화 2-3 (의문의 여자)
       image(_background_1, 0, 0, width, height);
       showQuestion_3(2, 0);
       push();
@@ -502,30 +502,103 @@ function draw() {
       //중간결과
       textSize(20);
       text("24일 실적", 1320, 350);
-      text("최고예요: " + matchGameScore3, 1320, 450);
-      text("고마워요: " + matchGameScore2, 1320, 530);
-      text("분발하세요: " + matchGameScore1, 1320, 610);
+      text("Perfect: " + matchGameScore3, 1320, 450);
+      text("Great: " + matchGameScore2, 1320, 530);
+      text("Not Bad: " + matchGameScore1, 1320, 610);
       text(
-        "실망이에요: " +
+        "Failure: " +
           (6 - (matchGameScore1 + matchGameScore2 + matchGameScore3)),
         1320,
         690
       );
       nextButton.show();
       break;
-    case 48:
-      //중간결과
-      textSize(20);
-      textAlign(CENTER);
-      text("최종결과", 1350, 350);
-      text("실적: " + matchGameScore + "/36", 1350, 450);
-      text("호감도: " + loveScore + "/6", 1350, 530);
-      // if (loveResult) {
-      //   text("외롭지 않은 크리스마스", 1350, 610);
-      // } else text("외로운 크리스마스", 1350, 610);
+    // case 48:
+    //   //중간결과
+    //   textSize(20);
+    //   textAlign(CENTER);
+    //   text("최종결과", 1350, 350);
+    //   text("실적: " + matchGameScore + "/36", 1350, 450);
+    //   text("호감도: " + loveScore + "/6", 1350, 530);
+    //   // if (loveResult) {
+    //   //   text("외롭지 않은 크리스마스", 1350, 610);
+    //   // } else text("외로운 크리스마스", 1350, 610);
 
-      text("-The END-", 1350, 690);
+    //   text("-The END-", 1350, 690);
+    //   break;
+    case 59:
+      push();
+      outro1();
+      pop();
+      introNextButton.show();
       break;
+    case 60:
+      push();
+      outro2();
+      pop();
+      introNextButton.show();
+      break;
+    case 61:
+      push();
+      outro3();
+      pop();
+      introNextButton.show();
+      break;
+    case 62:
+      push();
+      outro4();
+      pop();
+      introNextButton.show();
+      break;
+    case 63:
+      push();
+      outro5();
+      pop();
+      introNextButton.show();
+      break;
+    case 64:
+      push();
+      outro6();
+      pop();
+      introNextButton.show();
+      break;
+    case 65:
+      push();
+      outro7();
+      pop();
+      introNextButton.show();
+      break;
+    case 66:
+      push();
+      outro8();
+      pop();
+      introNextButton.show();
+      break;
+    case 67:
+      push();
+      outro9();
+      pop();
+      introNextButton.show();
+      break;
+    case 68:
+      push();
+      outro10();
+      pop();
+      introNextButton.show();
+      break;
+    case 69:
+      push();
+      outro11();
+      pop();
+      introNextButton.show();
+      break;
+    case 70:
+      push();
+      outro12();
+      pop();
+      introNextButton.show();
+      break;
+    //여기까지
   }
 
   if (cursorOn) {
@@ -793,29 +866,88 @@ function mouseClicked() {
     case 46:
       if (loveScore <= 3) {
         for (let i = 0; i < text2_2_1_selection.length; i++) {
-          text2_2_1_selection[i].next(1);
+          text2_2_1_selection[i].next(13);
         }
         if (text2_2_1_selection[0].over()) {
           // loveScore += 1;
-          loveResult1 = false;
+          loveResult1 = false; // 호감도 낮음, 여자랑 연결도 X
         } else if (text2_2_1_selection[1].over()) {
           loveScore += 0;
-          loveResult1 = true;
+          loveResult1 = true; // 호감도 낮음, 여자랑 연결은 해줌
         }
       } else if (loveScore > 3) {
         for (let i = 0; i < text2_2_selection.length; i++) {
-          text2_2_selection[i].next(1);
+          text2_2_selection[i].next(13);
         }
         if (text2_2_selection[0].over()) {
           // loveScore += 1;
-          loveResult2 = true;
+          loveResult2 = true; // 호감도 높음, 연애도 함
         } else if (text2_2_selection[1].over()) {
           loveScore += 0;
-          loveResult2 = false;
+          loveResult2 = false; //호감도 높음, 연애 안함
         }
       }
 
-    case 47:
-      nextButton.next(1);
+    case 59:
+      //공통 엔딩-1
+      introNextButton.next(1);
+      break;
+    case 60:
+      //공통 엔딩-2
+      introNextButton.next(1);
+      break;
+    case 61:
+      //공통 엔딩-3
+      if (
+        matchGameScore >= 20 &&
+        (loveResult1 == true || loveResult1 == false || loveResult2 == false)
+      ) {
+        //if 성과 우수 & (데이트 false OR 호감도 미달),
+        introNextButton.next(1);
+      } else if (
+        matchGameScore < 20 &&
+        (loveResult2 == false || loveResult1 == true || loveResult1 == false)
+      ) {
+        //if 성과 미달 & (데이트 false OR 호감도 미달), introNextButton.next(4);
+        introNextButton.next(4);
+      } else if (matchGameScore >= 20 && loveResult2 == true) {
+        //if 성과 우수 & 데이트 true, introNextButton.next(7);
+        introNextButton.next(7);
+      }
+      break;
+    case 62:
+      //우수 사원 O, 연애 X-1
+      introNextButton.next(1);
+      break;
+    case 63:
+      //우수 사원 O, 연애 X-2
+      introNextButton.next(1);
+      break;
+    case 64:
+      //우수 사원 O, 연애 X-3
+      break;
+    case 65:
+      //우수 사원 X, 연애 X-1
+      introNextButton.next(1);
+      break;
+    case 66:
+      //우수 사원 X, 연애 X-2
+      introNextButton.next(1);
+      break;
+    case 67:
+      //우수 사원 X, 연애 X-3
+      break;
+    case 68:
+      //우수 사원 O, 연애 O-1
+      introNextButton.next(1);
+      break;
+    case 69:
+      //우수 사원 O, 연애 O-2
+      introNextButton.next(1);
+      break;
+    case 70:
+      //우수 사원 O, 연애 O-3
+      break;
+    //여기까지
   }
 }

@@ -18,6 +18,13 @@ let quiz_2_1 = [];
 let quiz_3 = [];
 let quiz_3_1 = [];
 
+let tutorial_1 = [];
+let tutorial_2 = [];
+let tutorial_3 = [];
+let tutorial_4 = [];
+let tutorial_5 = [];
+let tutorial_6 = [];
+
 let rows;
 let cols;
 let maxMatch;
@@ -137,7 +144,7 @@ function loadDialogue() {
   ];
   text2_2_selection = [
     "(어머나...) Jake 씨의 데이트 신청을 받아준다.",
-    "(흥.. 이런 속셈.. 어림도 없지!) 매몰차게 끊는다.",
+    "(어림도 없지!) 매몰차게 끊고 아까 그 여자와 연결해준다.",
   ];
   text2_2_1 = [
     "P: Jingle bell, jingle bell, jingle bell rock! Jingle bells swing~ and jingle bells ring!",
@@ -170,6 +177,23 @@ function loadDialogue() {
     "M:네?... ",
     "D:(고민에 빠진다...)",
   ];
+
+  //엔딩용 추가
+  outroText = [
+    "여느 때와 다름 없이 바쁜 사무실",
+    "이 달의 우수 사원이 발표되는 날이다!",
+    "이 달의 우수 사원은......",
+    "_name!",
+    "그래도 우수 사원이라니, 크리스마스에 일한 보람이 있구나!",
+    "그렇지만 혼자 보내는 겨울은 조금 쓸쓸하다. 내년에는 좀 다를까?",
+    "Laura!",
+    "젠장, 우수 사원도 아니잖아!",
+    "혼자 보내는 겨울은 조금 쓸쓸하다. 내년에는 좀 다를까?",
+    "우수 사원이 되는 것에는 실패했네.",
+    "그렇지만 남은 연말을 따뜻하게 보낼 수 있을 것 같아!",
+  ];
+  //여기까지
+
   for (let i = 0; i < text1_1.length; i++) {
     text1_1[i] = new Text(text1_1[i]);
   } //돌발전화 1-1
@@ -237,7 +261,15 @@ function loadDialogue() {
 
 //// "qr""qc""ar""ac" : "질문"
 //// question row, question column, answer row, answer column
-
+function outroTextBox(i, x, y, w, h) {
+  push();
+  image(textBox_2, x, y, w, h);
+  textAlign(CENTER, CENTER);
+  textSize(38);
+  textWrap(WORD);
+  text(outroText[i - 1], x + 130, y + 40, 900, 100);
+  pop();
+}
 function setupListOfDialogue() {
   mukmul = loadFont("icon/a먹물명조L.ttf");
   dictionary_1 = {
@@ -454,7 +486,7 @@ function setupListOfCard() {
       ListOfCards_1[i][j] = loadImage("icon/card4_1.PNG");
     }
   }
-  hiddenPhoto_1 = loadImage("icon/test_1.PNG");
+  // hiddenPhoto_1 = loadImage("icon/test_1.PNG");
 
   // callingPhoto = loadImage("icon/call.PNG");
   // correctPhoto = loadImage("icon/correct.PNG");
@@ -511,6 +543,20 @@ function setupListOfCard() {
   gameRule = loadImage("icon/gamerule.png");
   calendar1 = loadImage("icon/calendar1.png");
   startPage = loadImage("icon/start.PNG");
+
+  //엔딩용 추가
+  case59 = loadImage("icon/case59.png");
+  case60 = loadImage("icon/case60.png");
+  case61 = loadImage("icon/case61.png");
+  case62 = loadImage("icon/case62.png");
+  case63 = loadImage("icon/case63.png");
+  case64 = loadImage("icon/case64.png");
+  case65 = loadImage("icon/case65.png");
+  case66 = loadImage("icon/case66.png");
+  case67 = loadImage("icon/case67.png");
+  case69 = loadImage("icon/case69.png");
+  case70 = loadImage("icon/case70.png");
+  //여기까지
 }
 
 function randomQuizLoad() {

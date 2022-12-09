@@ -31,6 +31,33 @@ let case9Y = 0;
 let case9Speed = 0.8;
 let timestamp = 0;
 
+// 엔딩용 추가
+let case59;
+let case60;
+let case61;
+let case62;
+let case63;
+let case64;
+let case65;
+let case66;
+let case67;
+let case69;
+let case70;
+
+let imageAlpha59 = 0;
+let imageAlpha60 = 0;
+let imageAlpha61 = 0;
+let imageAlpha62 = 0;
+let imageAlpha63 = 0;
+let imageAlpha64 = 0;
+let imageAlpha65 = 0;
+let imageAlpha66 = 0;
+let imageAlpha67 = 0;
+let imageAlpha68 = 0;
+let imageAlpha69 = 0;
+let imageAlpha70 = 0;
+// 여기까지
+
 let correctMatch;
 let correctMatchTiming;
 let matchGameResult;
@@ -38,7 +65,7 @@ let matchGameResult;
 let pts = [];
 
 let matchGameScore = 0;
-// let matchGameScore0;
+
 let matchGameScore1 = 0;
 let matchGameScore2 = 0;
 let matchGameScore3 = 0;
@@ -233,6 +260,138 @@ function intro9() {
   introTextBox(9, 180, 650, 1200, 200);
   imageAlpha9 += 10;
 }
+//엔딩용 추가
+function outro1() {
+  push();
+  tint(255, imageAlpha59);
+  image(case59, 0, 0, width, height);
+  pop();
+
+  outroTextBox(1, 180, 650, 1200, 200);
+  imageAlpha59 += 10;
+}
+
+function outro2() {
+  push();
+  image(case59, 0, 0, width, height);
+  tint(255, imageAlpha60);
+  image(case60, 0, 0, width, height);
+  pop();
+
+  outroTextBox(2, 180, 650, 1200, 200);
+  imageAlpha60 += 10;
+}
+
+function outro3() {
+  push();
+  image(case60, 0, 0, width, height);
+  tint(255, imageAlpha61);
+  image(case61, 0, 0, width, height);
+  pop();
+
+  outroTextBox(3, 180, 650, 1200, 200);
+  imageAlpha61 += 10;
+}
+
+function outro4() {
+  push();
+  image(case61, 0, 0, width, height);
+  tint(255, imageAlpha62);
+  image(case62, 0, 0, width, height);
+  pop();
+
+  outroTextBox(4, 180, 650, 1200, 200);
+  imageAlpha62 += 10;
+}
+
+function outro5() {
+  push();
+  image(case62, 0, 0, width, height);
+  tint(255, imageAlpha63);
+  image(case63, 0, 0, width, height);
+  pop();
+
+  outroTextBox(5, 180, 650, 1200, 200);
+  imageAlpha63 += 10;
+}
+
+function outro6() {
+  push();
+  image(case63, 0, 0, width, height);
+  tint(255, imageAlpha64);
+  image(case64, 0, 0, width, height);
+  pop();
+
+  outroTextBox(6, 180, 650, 1200, 200);
+  imageAlpha64 += 10;
+}
+
+function outro7() {
+  push();
+  image(case64, 0, 0, width, height);
+  tint(255, imageAlpha65);
+  image(case65, 0, 0, width, height);
+  pop();
+
+  outroTextBox(7, 180, 650, 1200, 200);
+  imageAlpha65 += 10;
+}
+
+function outro8() {
+  push();
+  image(case65, 0, 0, width, height);
+  tint(255, imageAlpha66);
+  image(case66, 0, 0, width, height);
+  pop();
+
+  outroTextBox(8, 180, 650, 1200, 200);
+  imageAlpha66 += 10;
+}
+
+function outro9() {
+  push();
+  image(case66, 0, 0, width, height);
+  tint(255, imageAlpha67);
+  image(case67, 0, 0, width, height);
+  pop();
+
+  outroTextBox(9, 180, 650, 1200, 200);
+  imageAlpha67 += 10;
+}
+
+function outro10() {
+  push();
+  image(case64, 0, 0, width, height);
+  tint(255, imageAlpha68);
+  image(case65, 0, 0, width, height);
+  pop();
+
+  outroTextBox(7, 180, 650, 1200, 200);
+  imageAlpha68 += 10;
+}
+
+function outro11() {
+  push();
+  image(case65, 0, 0, width, height);
+  tint(255, imageAlpha69);
+  image(case69, 0, 0, width, height);
+  pop();
+
+  outroTextBox(10, 180, 650, 1200, 200);
+  imageAlpha69 += 10;
+}
+
+function outro12() {
+  push();
+  image(case69, 0, 0, width, height);
+  tint(255, imageAlpha70);
+  image(case70, 0, 0, width, height);
+  pop();
+
+  outroTextBox(11, 180, 650, 1200, 200);
+  imageAlpha70 += 10;
+}
+//여기까지
 
 function showQuestion(qR, qC) {
   //qR: question Row, qC: question Column
@@ -259,7 +418,7 @@ function showQuestion(qR, qC) {
         mouseY < r * heightOfCard * 2 + 140 + heightOfCard * 2
       ) {
         image(
-          hiddenPhoto_1,
+          ListOfCards_1[r][c],
           widthOfCard * 2 * c + 140,
           heightOfCard * 2 * r + 140,
           widthOfCard * 2,
@@ -408,14 +567,6 @@ function showLine() {
   } else {
     image(cursor, mouseX - 20, mouseY - 20, 40, 40);
   }
-
-  // if (
-  //   mouseX > 140 &&
-  //   mouseX < 140 + widthOfCard * 20 &&
-  //   mouseY > 140 &&
-  //   mouseY < 140 + heightOfCard * 16
-  // ) {
-  // }
 }
 
 function showQuestionName(_num) {
@@ -616,7 +767,7 @@ function showAnswer() {
       if (!callSuccessSound_3.isPlaying()) {
         callSuccessSound_3.play();
       }
-      text("분발하세요", dialogue_x + 140, dialogue_y + 460);
+      text("휴.. 겨우 연결했네", dialogue_x + 140, dialogue_y + 460);
       if (matchGameScoreIsTrue) {
         matchGameScore += 1;
         matchGameScore1++;
