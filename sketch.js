@@ -21,7 +21,7 @@ function setup() {
   textFont(mukmul);
   introNextButton = new Button(1180, 720);
   introNextButton1 = new Button(1180, 430);
-  submitButton = new Button(width / 2 + 130, height / 2 - 25);
+  submitButton = new Button(360, 810);
   enterButton = new Button(1500, 800); // 돌발전화 진행 버튼, button.js
   nextButton = new Button(1350, 800); // 돌발전화 진행 버튼, button.js
   resetButton = new Reset(1400, 50);
@@ -35,22 +35,22 @@ function draw() {
   image(_background, 0, 0, width, height);
   switch (stage) {
     case 0:
-      background(220);
+      image(startPage, 0, 0, width, height);
       push();
-      fill(0);
+      fill(255);
       textSize(25);
-      text("Player Name : ", width / 2 - 125, height / 2 - 47);
+      text("Player Name : ", 100, 795);
       pop();
       push();
       fill(256);
-      rectMode(CENTER);
-      rect(width / 2, height / 2, 250, 50);
+      rectMode(CORNER);
+      rect(100, 810, 250, 50);
       submitButton.show();
       pop();
       push();
       fill(0);
       textSize(30);
-      text(_name, width / 2 - 120, height / 2 + 7);
+      text(_name, 120, 840);
       pop();
 
       break;
@@ -123,12 +123,34 @@ function draw() {
       push();
       fill(255, 231, 173);
       noStroke();
-      rect(0, 700, 1600, 200);
+      rect(0, 700, width, 200);
       pop();
-      image(gameRule, 0, 0, 1600, 900);
+      image(gameRule, 0, 0, width, height);
 
       break;
     case 11:
+      //튜토리얼 1
+      stage++;
+      break;
+    case 12:
+      //튜토리얼 2
+      stage++;
+      break;
+    case 13:
+      //튜토리얼 3
+      stage++;
+      break;
+    case 14:
+      //튜토리얼 4
+      stage++;
+      break;
+    case 15:
+      //튜토리얼 5
+      stage++;
+    case 16:
+      //튜토리얼 6
+      stage++;
+    case 17:
       //23일 오전 스타트
       if (dayStart) {
         dayStartTiming = millis();
@@ -152,28 +174,26 @@ function draw() {
       if (3 - int((millis() - dayStartTiming) / 1000) == 0) {
         stage++;
         dayStart = true;
+        stageStart = true;
       }
       // stage++;
       break;
-    case 12: //23일 오전 게임
+    case 18: //23일 오전 게임
       cursorOn = false;
       matchGameDraw_1(quiz_1_1[0]);
       break;
-    case 13:
-      matchGameDraw_1(quiz_1_1[1]);
-      break;
-    case 14:
+    case 19:
       matchGameDraw_2(quiz_2_1[0]);
       break;
-    case 15:
+    case 20:
       matchGameDraw_3(quiz_3_1[0]);
       break;
-    case 16:
+    case 21:
       //돌발전화 시작
       cursorOn = true;
       stage++;
       break;
-    case 17: //돌발전화 1-1
+    case 22: //돌발전화 1-1
       image(_background_1, 0, 0, width, height);
       showQuestion_1(6, 9);
 
@@ -195,7 +215,7 @@ function draw() {
         enter = 0;
       }
       break;
-    case 18: //돌발전화 선택지 1-1
+    case 23: //돌발전화 선택지 1-1
       image(_background_1, 0, 0, width, height);
       showQuestion_2(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
@@ -205,7 +225,7 @@ function draw() {
       }
 
       break;
-    case 19:
+    case 24:
       //23일 오후 시작
       if (dayStart) {
         dayStartTiming = millis();
@@ -229,27 +249,25 @@ function draw() {
       if (3 - int((millis() - dayStartTiming) / 1000) == 0) {
         stage++;
         dayStart = true;
+        stageStart = true;
       }
       break;
-    case 20: //23일 오후 게임
+    case 25: //23일 오후 게임
       cursorOn = false;
       matchGameDraw_2(quiz_2_1[1]);
       break;
-    case 21:
-      matchGameDraw_1(quiz_1_1[2]);
-      break;
-    case 22:
+    case 26:
       matchGameDraw_3(quiz_3_1[1]);
       break;
-    case 23:
-      matchGameDraw_2(quiz_2_1[2]);
+    case 27:
+      matchGameDraw_1(quiz_1_1[1]);
       break;
-    case 24:
+    case 28:
       //돌발전화 시작
       cursorOn = true;
       stage++;
       break;
-    case 25: //돌발전화 1-2
+    case 29: //돌발전화 1-2
       image(_background_1, 0, 0, width, height);
       showQuestion_1(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
@@ -272,14 +290,15 @@ function draw() {
         enter = 0;
       }
       break;
-    case 26: //돌발전화 선택지 1-2
+    case 30: //돌발전화 선택지 1-2
       image(_background_1, 0, 0, width, height);
       showQuestion_2(6, 9);
       for (let i = 0; i < text1_2_selection.length; i++) {
         text1_2_selection[i].display();
+        stageStart = true;
       }
       break;
-    case 27:
+    case 31:
       //중간결과
       textSize(20);
       text("23일 실적", 1320, 350);
@@ -288,13 +307,13 @@ function draw() {
       text("분발하세요: " + matchGameScore1, 1320, 610);
       text(
         "실망이에요: " +
-          (8 - (matchGameScore1 + matchGameScore2 + matchGameScore3)),
+          (6 - (matchGameScore1 + matchGameScore2 + matchGameScore3)),
         1320,
         690
       );
       nextButton.show();
       break;
-    case 28:
+    case 32:
       //23일 오전 스타트
       if (dayStart) {
         dayStartTiming = millis();
@@ -318,28 +337,26 @@ function draw() {
       if (3 - int((millis() - dayStartTiming) / 1000) == 0) {
         stage++;
         dayStart = true;
+        stageStart = true;
       }
       // stage++;
       break;
-    case 29: //24일 오전 게임
+    case 33: //24일 오전 게임
       cursorOn = false;
-      matchGameDraw_3(quiz_3_1[2]);
+      matchGameDraw_1(quiz_1_1[2]);
       break;
-    case 30:
+    case 34:
+      matchGameDraw_2(quiz_2_1[2]);
+      break;
+    case 35:
       matchGameDraw_1(quiz_1_1[3]);
       break;
-    case 31:
-      matchGameDraw_1(quiz_1_1[4]);
-      break;
-    case 32:
-      matchGameDraw_2(quiz_2_1[3]);
-      break;
-    case 33:
+    case 36:
       //돌발전화 시작
       cursorOn = true;
       stage++;
       break;
-    case 34: //돌발전화 2-1
+    case 37: //돌발전화 2-1
       image(_background_1, 0, 0, width, height);
       showQuestion_1(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
@@ -361,7 +378,7 @@ function draw() {
         enter = 0;
       }
       break;
-    case 35: //돌발전화 선택지 2-1
+    case 38: //돌발전화 선택지 2-1
       image(_background_1, 0, 0, width, height);
       showQuestion_2(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
@@ -369,7 +386,7 @@ function draw() {
         text2_1_selection[i].display();
       }
       break;
-    case 36:
+    case 39:
       //24일 오후 시작
       if (dayStart) {
         dayStartTiming = millis();
@@ -393,27 +410,25 @@ function draw() {
       if (3 - int((millis() - dayStartTiming) / 1000) == 0) {
         stage++;
         dayStart = true;
+        stageStart - true;
       }
       break;
-    case 37: //24일 오후 게임
+    case 40: //24일 오후 게임
       cursorOn = false;
-      matchGameDraw_2(quiz_2_1[4]);
-      break;
-    case 38:
-      matchGameDraw_3(quiz_3_1[3]);
-      break;
-    case 39:
-      matchGameDraw_1(quiz_1_1[5]);
-      break;
-    case 40:
-      matchGameDraw_2(quiz_2_1[5]);
+      matchGameDraw_3(quiz_3_1[2]);
       break;
     case 41:
+      matchGameDraw_2(quiz_2_1[3]);
+      break;
+    case 42:
+      matchGameDraw_2(quiz_2_1[4]);
+      break;
+    case 43:
       //돌발전화 시작
       cursorOn = true;
       stage++;
       break;
-    case 42: //돌발전화 2-3(의문의 여자)
+    case 44: //돌발전화 2-3(의문의 여자)
       image(_background_1, 0, 0, width, height);
       showQuestion_3(2, 0);
       push();
@@ -432,9 +447,10 @@ function draw() {
       if (enter == text2_3.length + 1) {
         stage++;
         enter = 0;
+        stageStart = true;
       }
       break;
-    case 43: //돌발전화 2-2
+    case 45: //돌발전화 2-2
       image(_background_1, 0, 0, width, height);
       showQuestion_1(6, 9);
       push();
@@ -456,7 +472,7 @@ function draw() {
       }
 
       break;
-    case 44: //돌발전화 선택지 2-2
+    case 46: //돌발전화 선택지 2-2
       image(_background_1, 0, 0, width, height);
       showQuestion_2(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
@@ -464,7 +480,7 @@ function draw() {
         text2_2_selection[i].display();
       }
       break;
-    case 45:
+    case 47:
       //중간결과
       textSize(20);
       text("24일 실적", 1320, 350);
@@ -473,19 +489,19 @@ function draw() {
       text("분발하세요: " + matchGameScore1, 1320, 610);
       text(
         "실망이에요: " +
-          (8 - (matchGameScore1 + matchGameScore2 + matchGameScore3)),
+          (6 - (matchGameScore1 + matchGameScore2 + matchGameScore3)),
         1320,
         690
       );
       nextButton.show();
       break;
-    case 46:
+    case 48:
       //중간결과
       textSize(20);
       textAlign(CENTER);
       text("최종결과", 1350, 350);
-      text("실적: " + matchGameScore + "/48", 1350, 450);
-      text("호감도: " + loveScore + "/7", 1350, 530);
+      text("실적: " + matchGameScore + "/36", 1350, 450);
+      text("호감도: " + loveScore + "/6", 1350, 530);
       if (loveResult) {
         text("외롭지 않은 크리스마스", 1350, 610);
       } else text("외로운 크리스마스", 1350, 610);
@@ -505,12 +521,12 @@ function keyPressed() {
       _name = _name.slice(0, -1);
     } else if (keyCode >= 65 && keyCode <= 90) _name += key;
   }
-  if (stage == 10) {
-    if (keyCode == ENTER) {
-      stage++;
-      introSound.setVolume(0.2);
-    }
-  }
+  // if (stage == 10) {
+  //   if (keyCode == ENTER) {
+  //     stage++;
+  //     introSound.setVolume(0.2);
+  //   }
+  // }
 }
 function mouseClicked() {
   resetButton.reset();
@@ -547,44 +563,64 @@ function mouseClicked() {
       break;
     case 9:
       introNextButton.next(1);
+      if (introNextButton.over()) {
+        introSound.setVolume(0.2);
+      }
+      break;
+    case 10:
+      stage++;
+      break;
+    case 11:
+      introNextButton.next(1);
       break;
     case 12:
+      introNextButton.next(1);
+      break;
+    case 13:
+      introNextButton.next(1);
+      break;
+    case 14:
+      introNextButton.next(1);
+      break;
+    case 15:
+      introNextButton.next(1);
+      break;
+    case 16:
+      // if (introNextButton.over()) {
+      //   introSound.setVolume(0.2);
+      // }
+      introNextButton.next(1);
+      break;
+    case 18:
       clickBook(); // 힌트책 클릭
       if (!click_book0) {
         showMatch(quiz_1_1[0]); //answer location과 일치하는지 확인
       }
       break;
-    case 13:
-      clickBook();
-      if (!click_book0) {
-        showMatch(quiz_1_1[1]);
-      }
-      break;
-    case 14:
+    case 19:
       clickBook();
       if (!click_book0) {
         showMatch(quiz_2_1[0]);
       }
       break;
-    case 15:
+    case 20:
       clickBook();
       if (!click_book0) {
         showMatch(quiz_3_1[0]);
       }
       break;
-    case 17:
+    case 22:
       if (enterButton.over()) {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
         if (enter <= text1_1.length) {
-          for (let j = 0; j <= enter - 1; j++) {
+          for (let j = 0; j < enter; j++) {
             text1_1[j].goUp();
           }
         }
       }
-
       break;
-    case 18:
+    case 23:
       for (let i = 0; i < text1_1_selection.length; i++) {
         text1_1_selection[i].next(1);
       }
@@ -596,31 +632,25 @@ function mouseClicked() {
         loveScore += 0;
       }
       break;
-    case 20:
+    case 25:
       clickBook();
       if (!click_book0) {
         showMatch(quiz_2_1[1]); //answer location과 일치하는지 확인
       }
       break;
-    case 21:
-      clickBook();
-      if (!click_book0) {
-        showMatch(quiz_1_1[2]);
-      }
-      break;
-    case 22:
+    case 26:
       clickBook();
       if (!click_book0) {
         showMatch(quiz_3_1[1]);
       }
       break;
-    case 23:
+    case 27:
       clickBook();
       if (!click_book0) {
-        showMatch(quiz_2_1[2]);
+        showMatch(quiz_1_1[1]);
       }
       break;
-    case 25:
+    case 29:
       if (enterButton.over()) {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
@@ -632,7 +662,7 @@ function mouseClicked() {
         }
       }
       break;
-    case 26:
+    case 30:
       for (let i = 0; i < text1_2_selection.length; i++) {
         text1_2_selection[i].next(1);
       }
@@ -643,34 +673,33 @@ function mouseClicked() {
       } else if (text1_2_selection[2].over()) {
         loveScore += 0;
       }
-    case 27:
+    case 31:
+      if (nextButton.over()) {
+        matchGameScore1 = 0;
+        matchGameScore2 = 0;
+        matchGameScore3 = 0;
+      }
       nextButton.next(1);
       break;
-    case 29:
+    case 33:
       clickBook(); // 힌트책 클릭
       if (!click_book0) {
-        showMatch(quiz_3_1[2]); //answer location과 일치하는지 확인
+        showMatch(quiz_1_1[2]); //answer location과 일치하는지 확인
       }
       break;
-    case 30:
+    case 34:
+      clickBook();
+      if (!click_book0) {
+        showMatch(quiz_2_1[2]);
+      }
+      break;
+    case 35:
       clickBook();
       if (!click_book0) {
         showMatch(quiz_1_1[3]);
       }
       break;
-    case 31:
-      clickBook();
-      if (!click_book0) {
-        showMatch(quiz_1_1[4]);
-      }
-      break;
-    case 32:
-      clickBook();
-      if (!click_book0) {
-        showMatch(quiz_2_1[3]);
-      }
-      break;
-    case 34:
+    case 37:
       if (enterButton.over()) {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
@@ -682,7 +711,7 @@ function mouseClicked() {
         }
       }
       break;
-    case 35:
+    case 38:
       for (let i = 0; i < text2_1_selection.length; i++) {
         text2_1_selection[i].next(1);
       }
@@ -694,31 +723,25 @@ function mouseClicked() {
         loveScore += 0;
       }
       break;
-    case 37:
-      clickBook();
-      if (!click_book0) {
-        showMatch(quiz_2_1[4]); //answer location과 일치하는지 확인
-      }
-      break;
-    case 38:
-      clickBook();
-      if (!click_book0) {
-        showMatch(quiz_3_1[3]);
-      }
-      break;
-    case 39:
-      clickBook();
-      if (!click_book0) {
-        showMatch(quiz_1_1[5]);
-      }
-      break;
     case 40:
       clickBook();
       if (!click_book0) {
-        showMatch(quiz_2_1[5]);
+        showMatch(quiz_3_1[2]); //answer location과 일치하는지 확인
+      }
+      break;
+    case 41:
+      clickBook();
+      if (!click_book0) {
+        showMatch(quiz_2_1[3]);
       }
       break;
     case 42:
+      clickBook();
+      if (!click_book0) {
+        showMatch(quiz_2_1[4]);
+      }
+      break;
+    case 44:
       if (enterButton.over()) {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
@@ -730,7 +753,7 @@ function mouseClicked() {
         }
       }
       break;
-    case 43:
+    case 45:
       if (enterButton.over()) {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
@@ -742,18 +765,18 @@ function mouseClicked() {
         }
       }
       break;
-    case 44:
+    case 46:
       for (let i = 0; i < text2_2_selection.length; i++) {
         text2_2_selection[i].next(1);
       }
       if (text2_2_selection[0].over()) {
-        loveScore += 1;
+        // loveScore += 1;
         loveResult = true;
       } else if (text2_2_selection[1].over()) {
         loveScore += 0;
         loveResult = false;
       }
-    case 45:
+    case 47:
       nextButton.next(1);
   }
 }

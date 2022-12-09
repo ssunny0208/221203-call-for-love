@@ -16,7 +16,16 @@ let barY = 0;
 let barSpeed = 5; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
 let barGrav = 0.03;
 
-let imageAlpha = 0;
+let imageAlpha0 = 0;
+let imageAlpha1 = 0;
+let imageAlpha2 = 0;
+let imageAlpha3 = 0;
+let imageAlpha4 = 0;
+let imageAlpha5 = 0;
+let imageAlpha6 = 0;
+let imageAlpha7 = 0;
+let imageAlpha8 = 0;
+let imageAlpha9 = 0;
 
 let case9Y = 0;
 let case9Speed = 0.8;
@@ -76,7 +85,7 @@ let hideLine = false;
 
 function intro1() {
   //눈꺼풀
-  tint(255, imageAlpha);
+  tint(255, imageAlpha1);
   image(case1, 0, 140, width, height);
   // filter(BLUR,5);
   fill(0);
@@ -101,7 +110,7 @@ function intro1() {
     barGrav = 0;
     barY_1 = 150;
   }
-  imageAlpha += 10;
+  imageAlpha1 += 10;
 
   introTextBox(1, 180, 650, 1200, 200);
 }
@@ -109,25 +118,34 @@ function intro1() {
 function intro2() {
   //자기소개
   push();
-  tint(255, imageAlpha);
+  image(case1, 0, 140, width, height);
+  fill(0);
+  rectMode(CORNERS);
+  rect(0, 0, width, height / 2 - 150);
+  rect(0, height, width, height / 2 + 150);
+  tint(255, imageAlpha2);
   image(_background, 0, 0, width, height);
   pop();
+
   introTextBox(2, 180, 350, 1200, 200);
-  imageAlpha += 10;
+  imageAlpha2 += 10;
 }
 
 function intro3() {
   push();
-  tint(255, imageAlpha);
+  image(_background, 0, 0, width, height);
+  tint(255, imageAlpha3);
   image(case3, 0, 0, width, height);
   pop();
+
   introTextBox(3, 180, 650, 1200, 200);
-  imageAlpha += 10;
+  imageAlpha3 += 10;
 }
 
 function intro4() {
   push();
-  tint(255, imageAlpha);
+  image(case3, 0, 0, width, height);
+  tint(255, imageAlpha4);
   image(case4[case4Num], 0, 0, width, height);
   pop();
 
@@ -137,13 +155,14 @@ function intro4() {
     if (case4Num >= 4) case4Num = 4;
   }
 
-  imageAlpha += 10;
+  imageAlpha4 += 10;
   introTextBox(4, 180, 650, 1200, 200);
 }
 
 function intro5() {
   push();
-  tint(255, imageAlpha);
+  image(case4[4], 0, 0, width, height);
+  tint(255, imageAlpha5);
   image(case4[0], 0, 0, width, height);
   image(schedule[scheduleNum], 150, 50);
   pop();
@@ -153,22 +172,25 @@ function intro5() {
     timestamp = millis();
     if (scheduleNum >= 1) scheduleNum = 1;
   }
-  imageAlpha += 10;
+  imageAlpha5 += 10;
   introTextBox(5, 180, 650, 1200, 200);
 }
 
 function intro6() {
   push();
-  tint(255, imageAlpha);
+  image(case4[0], 0, 0, width, height);
+  image(schedule[1], 150, 50);
+  tint(255, imageAlpha6);
   image(case6, 0, 0, width, height);
   pop();
-  imageAlpha += 10;
+  imageAlpha6 += 10;
   introTextBox(6, 180, 650, 1200, 200);
 }
 
 function intro7() {
   push();
-  tint(255, imageAlpha);
+  image(case6, 0, 0, width, height);
+  tint(255, imageAlpha7);
   image(case7[case7Num], 0, 0, width, height);
   pop();
   if (millis() - timestamp > 500) {
@@ -176,24 +198,27 @@ function intro7() {
     timestamp = millis();
     if (case7Num >= 3) case7Num = 3;
   }
-  imageAlpha += 10;
+  imageAlpha7 += 10;
   introTextBox(7, 180, 650, 1200, 200);
 }
 
 function intro8() {
   push();
-  tint(255, imageAlpha);
+  image(case7[3], 0, 0, width, height);
+  tint(255, imageAlpha8);
   image(case8, 0, 0, width, height);
   image(case8Clock, 0, 0, width, height);
   // alarmClock.play();
   pop();
-  imageAlpha += 10;
+  imageAlpha8 += 10;
   introTextBox(8, 180, 650, 1200, 200);
 }
 
 function intro9() {
   push();
-  tint(255, imageAlpha);
+  image(case8, 0, 0, width, height);
+  image(case8Clock, 0, 0, width, height);
+  tint(255, imageAlpha9);
   background(255);
   image(case9Back, case9BackX, 0);
   image(case9, 0, case9Y, width, height);
@@ -206,7 +231,7 @@ function intro9() {
     case9Speed = -case9Speed;
   }
   introTextBox(9, 180, 650, 1200, 200);
-  imageAlpha += 10;
+  imageAlpha9 += 10;
 }
 
 function showQuestion(qR, qC) {
@@ -230,13 +255,13 @@ function showQuestion(qR, qC) {
       if (
         mouseX > 140 + widthOfCard * 2 * c &&
         mouseX < 140 + widthOfCard * 2 * c + widthOfCard * 2 &&
-        mouseY > r * heightOfCard * 2 + 110 &&
-        mouseY < r * heightOfCard * 2 + 110 + heightOfCard * 2
+        mouseY > r * heightOfCard * 2 + 140 &&
+        mouseY < r * heightOfCard * 2 + 140 + heightOfCard * 2
       ) {
         image(
           hiddenPhoto_1,
           widthOfCard * 2 * c + 140,
-          heightOfCard * 2 * r + 110,
+          heightOfCard * 2 * r + 140,
           widthOfCard * 2,
           heightOfCard * 2
         );
@@ -244,7 +269,7 @@ function showQuestion(qR, qC) {
         image(
           ListOfCards[r][c],
           widthOfCard * 2 * c + 140,
-          heightOfCard * 2 * r + 110,
+          heightOfCard * 2 * r + 140,
           widthOfCard * 2,
           heightOfCard * 2
         );
@@ -254,7 +279,7 @@ function showQuestion(qR, qC) {
   image(
     ListOfCards_1[qR][qC],
     widthOfCard * 2 * qC + 140,
-    heightOfCard * 2 * qR + 110,
+    heightOfCard * 2 * qR + 140,
     widthOfCard * 2,
     heightOfCard * 2
   );
@@ -266,6 +291,9 @@ function showQuestion(qR, qC) {
 
 function showQuestion_1(qR, qC) {
   if (stageStart) {
+    if (timerSound.isPlaying) {
+      timerSound.stop();
+    }
     helloSound.setVolume(1);
     helloSound.play();
     stageStart = false;
@@ -275,7 +303,7 @@ function showQuestion_1(qR, qC) {
       image(
         ListOfCards[r][c],
         widthOfCard * 2 * c + 140,
-        heightOfCard * 2 * r + 110,
+        heightOfCard * 2 * r + 140,
         widthOfCard * 2,
         heightOfCard * 2
       );
@@ -285,7 +313,7 @@ function showQuestion_1(qR, qC) {
   image(
     ListOfCards_1[qR][qC],
     widthOfCard * 2 * qC + 140,
-    heightOfCard * 2 * qR + 110,
+    heightOfCard * 2 * qR + 140,
     widthOfCard * 2,
     heightOfCard * 2
   );
@@ -297,7 +325,7 @@ function showQuestion_2(qR, qC) {
       image(
         ListOfCards[r][c],
         widthOfCard * 2 * c + 140,
-        heightOfCard * 2 * r + 110,
+        heightOfCard * 2 * r + 140,
         widthOfCard * 2,
         heightOfCard * 2
       );
@@ -306,7 +334,7 @@ function showQuestion_2(qR, qC) {
   image(
     ListOfCards_1[qR][qC],
     widthOfCard * 2 * qC + 140,
-    heightOfCard * 2 * qR + 110,
+    heightOfCard * 2 * qR + 140,
     widthOfCard * 2,
     heightOfCard * 2
   );
@@ -323,7 +351,7 @@ function showQuestion_3(qR, qC) {
       image(
         ListOfCards[r][c],
         widthOfCard * 2 * c + 140,
-        heightOfCard * 2 * r + 110,
+        heightOfCard * 2 * r + 140,
         widthOfCard * 2,
         heightOfCard * 2
       );
@@ -333,7 +361,7 @@ function showQuestion_3(qR, qC) {
   image(
     ListOfCards_1[qR][qC],
     widthOfCard * 2 * qC + 140,
-    heightOfCard * 2 * qR + 110,
+    heightOfCard * 2 * qR + 140,
     widthOfCard * 2,
     heightOfCard * 2
   );
@@ -344,7 +372,7 @@ function showLine() {
     pts = [
       createVector(
         widthOfCard * (2 * questionColumn) + 176,
-        heightOfCard * (2 * questionRow + 1) + 110
+        heightOfCard * (2 * questionRow + 1) + 140
       ),
       createVector(
         (3 * (widthOfCard * (2 * questionColumn) + 176) + mouseX) / 4,
@@ -384,8 +412,8 @@ function showLine() {
   // if (
   //   mouseX > 140 &&
   //   mouseX < 140 + widthOfCard * 20 &&
-  //   mouseY > 110 &&
-  //   mouseY < 110 + heightOfCard * 16
+  //   mouseY > 140 &&
+  //   mouseY < 140 + heightOfCard * 16
   // ) {
   // }
 }
@@ -463,8 +491,8 @@ function showMatch([qR, qC, aR, aC]) {
   if (
     mouseX > 140 + widthOfCard * 2 * aC &&
     mouseX < 140 + widthOfCard * 2 * aC + widthOfCard * 2 &&
-    mouseY > aR * heightOfCard * 2 + 110 &&
-    mouseY < aR * heightOfCard * 2 + 110 + heightOfCard * 2
+    mouseY > aR * heightOfCard * 2 + 140 &&
+    mouseY < aR * heightOfCard * 2 + 140 + heightOfCard * 2
   ) {
     correctMatch = true; //answer location을 클릭하면 참
 
@@ -489,8 +517,8 @@ function showMatch([qR, qC, aR, aC]) {
   if (
     mouseX > 140 &&
     mouseX < 140 + widthOfCard * 20 &&
-    mouseY > 110 &&
-    mouseY < 110 + heightOfCard * 16
+    mouseY > 140 &&
+    mouseY < 140 + heightOfCard * 16
   ) {
     clickNum++;
     wrongAnswerTiming = millis();
@@ -504,7 +532,7 @@ function showAnswer() {
     image(
       ListOfCards_1[answerRow][answerColumn],
       widthOfCard * 2 * answerColumn + 140,
-      heightOfCard * 2 * answerRow + 110,
+      heightOfCard * 2 * answerRow + 140,
       widthOfCard * 2,
       heightOfCard * 2
     );
@@ -524,11 +552,11 @@ function showAnswer() {
           171 +
           3 * (widthOfCard * (2 * answerColumn) + 176)) /
           4,
-        heightOfCard * (2 * answerRow + 1) + 110 + 150
+        heightOfCard * (2 * answerRow + 1) + 140 + 150
       ));
     pts[3] = createVector(
       widthOfCard * (2 * answerColumn) + 176,
-      heightOfCard * (2 * answerRow + 1) + 110
+      heightOfCard * (2 * answerRow + 1) + 140
     );
     bezier(
       pts[0].x,
@@ -626,10 +654,10 @@ function showAnswer() {
 
 function showBook() {
   //힌트 책 (드로우)
-  book_x = cols * widthOfCard * 2 + 139;
+  book_x = cols * widthOfCard * 2 + 136;
   book_y = rows * heightOfCard * 2 - 190;
-  book_w = 80;
-  book_h = 160;
+  book_w = 120;
+  book_h = 220;
   if (
     mouseX > book_x &&
     mouseX < book_x + book_w &&
@@ -641,19 +669,19 @@ function showBook() {
 
   if (click_book0) {
     tab_x = 90;
-    tab_y = 162;
+    tab_y = 170;
     tab_w = 50;
     tab_h = 80;
     if (click_book1) {
-      image(book_map, 0, 0, 1600, 900);
+      image(book_map, 0, 0, width, height);
     } else if (click_book2) {
-      image(book_address1, 0, 0, 1600, 900);
+      image(book_address1, 0, 0, width, height);
     } else if (click_book3) {
-      image(book_address2, 0, 0, 1600, 900);
+      image(book_address2, 0, 0, width, height);
     } else if (click_book4) {
-      image(book_address3, 0, 0, 1600, 900);
+      image(book_address3, 0, 0, width, height);
     } else if (click_book5) {
-      image(book_mapOffice, 0, 0, 1600, 900);
+      image(book_mapOffice, 0, 0, width, height);
     }
     if (
       mouseX > tab_x &&

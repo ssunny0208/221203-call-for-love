@@ -7,7 +7,7 @@ class Button {
   }
   over() {
     //마우스오버 시 참
-    if (dist(this.x + 25, this.y + 25, mouseX, mouseY) < 25) {
+    if (dist(this.x + 30, this.y + 25, mouseX, mouseY) < 35) {
       return true;
     } else {
       return false;
@@ -70,15 +70,16 @@ class Reset {
       stage = 0;
       enter = 0;
       _name = "";
+
       dayStart = true;
-      dayStartTiming;
+
+      loveScore = 0;
+      loveResult = false;
+
       cursorOn = true;
 
-      case4 = [];
       case4Num = 0;
-      schedule = [];
       scheduleNum = 0;
-      case7 = [];
       case7Num = 0;
       case9BackX = 0;
       barY_1 = 0;
@@ -86,11 +87,19 @@ class Reset {
       barSpeed = 5; // 여기를 늘리면 눈을 깜박이는 속도가 빨라집니다
       barGrav = 0.03;
 
-      imageAlpha = 0;
+      imageAlpha0 = 0;
+      imageAlpha1 = 0;
+      imageAlpha2 = 0;
+      imageAlpha3 = 0;
+      imageAlpha4 = 0;
+      imageAlpha5 = 0;
+      imageAlpha6 = 0;
+      imageAlpha7 = 0;
+      imageAlpha8 = 0;
+      imageAlpha9 = 0;
 
       case9Y = 0;
       case9Speed = 0.8;
-      case9BackX = 0;
       timestamp = 0;
 
       pts = [];
@@ -101,6 +110,7 @@ class Reset {
       matchGameScore3 = 0;
 
       matchGameScoreIsTrue = false;
+
       clickNum = 0;
 
       wrongAnswerDelayCount = 2;
@@ -111,6 +121,7 @@ class Reset {
       stageStart = true;
 
       stop = false;
+
       click_book0 = false;
       click_book1 = false;
       click_book2 = false;
@@ -120,8 +131,9 @@ class Reset {
 
       hideLine = false;
 
-      loveScore = 0;
-      loveResult = false;
+      quiz_1_1 = shuffle(quiz_1);
+      quiz_2_1 = shuffle(quiz_2);
+      quiz_3_1 = shuffle(quiz_3);
 
       if (introSound.isPlaying()) {
         introSound.stop();
@@ -237,9 +249,6 @@ class Timer {
     pop();
   }
   setUpTimer() {
-    // if (!this.timerStop && frameCount % 60 == 0 && this.now > 0) {
-    //   this.now--;
-    // }
     if (
       !this.timerStop &&
       int((millis() - stageStartTiming) / 1000.0) >= this.now &&
@@ -275,7 +284,7 @@ class Timer {
         textAlign(LEFT);
         textFont(mukmul);
         textSize(20);
-        text("실망이에요", dialogue_x + 120, dialogue_y + 460);
+        text("실망이에요", dialogue_x + 140, dialogue_y + 460);
       }
       if (this.answerDelayCount == 0) {
         if (callFailureSound.isPlaying()) {
