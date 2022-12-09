@@ -167,7 +167,7 @@ class Selection {
     textSize(this.textSize);
     fill(0);
     textWrap(WORD);
-    text(this.text, this.x + 10, this.y + 30, this.w - 20, this.h);
+    text(this.text, this.x + 20, this.y + 30, this.w - 30, this.h);
   }
   next(n) {
     //스테이지 넘기는 버튼
@@ -185,7 +185,7 @@ class Text {
     this.text = text;
     this.x = 1050 + 140;
     this.y = 790;
-    this.w = 360;
+    this.w = 380;
     this.h = 120;
     this.splitString = split(this.text, ":"); // :을 기준으로 text split, 말풍선 구분
   }
@@ -197,18 +197,18 @@ class Text {
       //"P"=파란말풍선
       // print("P");
       image(dialogue_B, this.x, this.y, this.w, this.h);
-      text(this.splitString[1], this.x + 60, this.y + 40, this.w - 60, this.h);
+      text(this.splitString[1], this.x + 60, this.y + 40, this.w - 80, this.h);
     } else if (this.splitString[0] == "M") {
       //"M"=핑크색 말풍선
       // print("M");
-      image(dialogue_P, this.x + 30, this.y, this.w, this.h);
-      text(this.splitString[1], this.x + 60, this.y + 40, this.w - 60, this.h);
+      image(dialogue_P, this.x + 20, this.y, this.w, this.h);
+      text(this.splitString[1], this.x + 60, this.y + 40, this.w - 80, this.h);
     } else if (this.splitString[0] == "D") {
       //"D"=지시문
       textAlign(CENTER);
       // print("D");
       // image(textBox_2, this.x + 20, this.y, this.w, this.h);
-      text(this.splitString[1], this.x + 35, this.y + 30, this.w - 40, this.h);
+      text(this.splitString[1], this.x + 35, this.y + 30, this.w - 80, this.h);
     }
   }
   goUp() {

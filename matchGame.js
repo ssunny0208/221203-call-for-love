@@ -428,9 +428,9 @@ function showQuestionName(_num) {
 
 function showHint_1(_text) {
   //숫자게임 질문지
-  dialogue_x = 1120;
+  dialogue_x = 1115;
   dialogue_y = 280;
-  dialogue_w = 355;
+  dialogue_w = 380;
   dialogue_h = 130;
   // image(dialog, dialogue_x, dialogue_y, 500, 620);
   image(dialogue_W, dialogue_x + 80, dialogue_y + 250, dialogue_w, dialogue_h);
@@ -441,7 +441,7 @@ function showHint_1(_text) {
     dictionary_1[_text],
     dialogue_x + 140,
     dialogue_y + 290,
-    dialogue_w - 60,
+    dialogue_w - 80,
     dialogue_h
   );
   // print(_text);
@@ -449,7 +449,7 @@ function showHint_1(_text) {
 }
 function showHint_2(_text) {
   //이름게임 질문지
-  dialogue_x = 1120;
+  dialogue_x = 1115;
   dialogue_y = 280;
   dialogue_w = 380;
   dialogue_h = 130;
@@ -462,15 +462,15 @@ function showHint_2(_text) {
     dictionary_2[_text],
     dialogue_x + 140,
     dialogue_y + 290,
-    dialogue_w - 60,
+    dialogue_w - 80,
     dialogue_h
   );
 }
 function showHint_3(_text) {
   //관공서 게임 질문지
-  dialogue_x = 1120;
+  dialogue_x = 1115;
   dialogue_y = 280;
-  dialogue_w = 355;
+  dialogue_w = 380;
   dialogue_h = 130;
   // image(dialog, dialogue_x, dialogue_y, 500, 620);
   image(dialogue_W, dialogue_x + 80, dialogue_y + 250, dialogue_w, dialogue_h);
@@ -481,7 +481,7 @@ function showHint_3(_text) {
     dictionary_3[_text],
     dialogue_x + 140,
     dialogue_y + 290,
-    dialogue_w - 60,
+    dialogue_w - 80,
     dialogue_h
   );
 }

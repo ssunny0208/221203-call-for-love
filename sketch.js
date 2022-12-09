@@ -6,7 +6,8 @@ let dayStart = true;
 let dayStartTiming;
 
 let loveScore = 0;
-let loveResult = false;
+let loveResult1 = false;
+let loveResult2 = false;
 
 let cursorOn = true;
 
@@ -24,7 +25,7 @@ function setup() {
   submitButton = new Button(360, 810);
   enterButton = new Button(1500, 800); // 돌발전화 진행 버튼, button.js
   nextButton = new Button(1350, 800); // 돌발전화 진행 버튼, button.js
-  resetButton = new Reset(1400, 50);
+  resetButton = new Reset(1450, 50);
   gameTimer = new Timer(20, 1225, 280 + 100, 320, 50); // 게임 타이머, timer.js
   randomQuizLoad();
   noCursor();
@@ -461,23 +462,40 @@ function draw() {
       pop();
 
       enterButton.show();
-      if (enter <= text2_2.length) {
-        for (let i = 0; i < enter; i++) {
-          text2_2[i].showDialogue();
+      if (loveScore <= 3) {
+        if (enter <= text2_2_1.length) {
+          for (let i = 0; i < enter; i++) {
+            text2_2_1[i].showDialogue();
+          }
+        }
+        if (enter == text2_2_1.length + 1) {
+          stage++;
+          enter = 0;
+        }
+      } else if (loveScore > 3) {
+        if (enter <= text2_2.length) {
+          for (let i = 0; i < enter; i++) {
+            text2_2[i].showDialogue();
+          }
+        }
+        if (enter == text2_2.length + 1) {
+          stage++;
+          enter = 0;
         }
       }
-      if (enter == text2_2.length + 1) {
-        stage++;
-        enter = 0;
-      }
-
       break;
     case 46: //돌발전화 선택지 2-2
       image(_background_1, 0, 0, width, height);
       showQuestion_2(6, 9);
       // image(dialog, dialogue_x, dialogue_y, 500, 600);
-      for (let i = 0; i < text2_2_selection.length; i++) {
-        text2_2_selection[i].display();
+      if (loveScore <= 3) {
+        for (let i = 0; i < text2_2_1_selection.length; i++) {
+          text2_2_1_selection[i].display();
+        }
+      } else if (loveScore > 3) {
+        for (let i = 0; i < text2_2_selection.length; i++) {
+          text2_2_selection[i].display();
+        }
       }
       break;
     case 47:
@@ -502,9 +520,9 @@ function draw() {
       text("최종결과", 1350, 350);
       text("실적: " + matchGameScore + "/36", 1350, 450);
       text("호감도: " + loveScore + "/6", 1350, 530);
-      if (loveResult) {
-        text("외롭지 않은 크리스마스", 1350, 610);
-      } else text("외로운 크리스마스", 1350, 610);
+      // if (loveResult) {
+      //   text("외롭지 않은 크리스마스", 1350, 610);
+      // } else text("외로운 크리스마스", 1350, 610);
 
       text("-The END-", 1350, 690);
       break;
@@ -757,25 +775,46 @@ function mouseClicked() {
       if (enterButton.over()) {
         //enter 버튼을 누르면 dialogue가 update된다
         enter++;
-
-        if (enter <= text2_2.length) {
-          for (let j = 0; j <= enter - 1; j++) {
-            text2_2[j].goUp();
+        if (loveScore <= 3) {
+          if (enter <= text2_2_1.length) {
+            for (let j = 0; j <= enter - 1; j++) {
+              text2_2_1[j].goUp();
+            }
+          }
+        } else if (loveScore > 3) {
+          if (enter <= text2_2.length) {
+            for (let j = 0; j <= enter - 1; j++) {
+              text2_2[j].goUp();
+            }
           }
         }
       }
       break;
     case 46:
-      for (let i = 0; i < text2_2_selection.length; i++) {
-        text2_2_selection[i].next(1);
+      if (loveScore <= 3) {
+        for (let i = 0; i < text2_2_1_selection.length; i++) {
+          text2_2_1_selection[i].next(1);
+        }
+        if (text2_2_1_selection[0].over()) {
+          // loveScore += 1;
+          loveResult1 = false;
+        } else if (text2_2_1_selection[1].over()) {
+          loveScore += 0;
+          loveResult1 = true;
+        }
+      } else if (loveScore > 3) {
+        for (let i = 0; i < text2_2_selection.length; i++) {
+          text2_2_selection[i].next(1);
+        }
+        if (text2_2_selection[0].over()) {
+          // loveScore += 1;
+          loveResult2 = true;
+        } else if (text2_2_selection[1].over()) {
+          loveScore += 0;
+          loveResult2 = false;
+        }
       }
-      if (text2_2_selection[0].over()) {
-        // loveScore += 1;
-        loveResult = true;
-      } else if (text2_2_selection[1].over()) {
-        loveScore += 0;
-        loveResult = false;
-      }
+
     case 47:
       nextButton.next(1);
   }
